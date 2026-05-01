@@ -82,7 +82,7 @@ const modeLabels = {
   },
   paint: {
     title: 'Flag Painter',
-    subtitle: 'Vyber správne farby vlajky podľa krajiny',
+    subtitle: 'Vyskladaj farby vlajky v správnom poradí',
   },
 } satisfies Record<GameMode, { title: string; subtitle: string }>;
 
@@ -90,14 +90,10 @@ const getOptionLabel = (index: number) => String.fromCharCode(65 + index);
 
 const buildQuestionSpeech = (question: Question) => {
   if (question.mode === 'paint') {
-    const options = question.options
-      .map((option, index) => {
-        const palette = getFlagPalette(option.code);
-        return `Po ${getOptionLabel(index)}: ${palette?.labels.join(', ') || option.name}.`;
-      })
-      .join(' ');
+    const palette = getFlagPalette(question.answer.code);
+    const slots = palette?.colors.length || 0;
 
-    return `Domaľuj vlajku krajiny ${question.answer.name}. Vyber správne farby. ${options}`;
+    return `Flag Painter. Skladáme vlajku krajiny ${question.answer.name}. Vyber ${slots} farby v správnom poradí.`;
   }
 
   if (question.mode === 'country') {
@@ -172,6 +168,7 @@ const App = () => {
   const discoveredFlags = progress.discoveredCountries.length;
   const activeBest = progress.bestScores[activeLevel.id] || 0;
   const passed = score >= activeLevel.targetScore;
+  const newSessionDiscoveries = sessionDiscovered.filter((code) => !discoveredSet.has(code));
   const selectedVoice = voices.find((voice) => voice.voiceURI === selectedVoiceURI) || findBestVoice(voices);
   const currentPalette = currentQuestion ? getFlagPalette(currentQuestion.answer.code) : undefined;
   const mapChoices = useMemo(() => {
@@ -379,6 +376,7 @@ const App = () => {
   const recordAnswer = (correct: boolean) => {
     if (!currentQuestion) return;
 
+    const newDiscovery = isNewDiscovery(currentQuestion.answer.code);
     setAnswered(true);
     setSessionDiscovered((current) => Array.from(new Set([...current, currentQuestion.answer.code])));
     setSessionAnswers((current) => [
@@ -390,11 +388,11 @@ const App = () => {
     ]);
     if (correct) {
       setScore((current) => current + 1);
-      speakText(`Správne. Získavaš novú vlajku: ${currentQuestion.answer.name}. ${getCountryStory(currentQuestion.answer)}`);
+      speakText(getCorrectVoiceText(currentQuestion, newDiscovery));
       return;
     }
 
-    speakText(`Ešte nie. Správna odpoveď je ${currentQuestion.answer.name}. ${currentQuestion.hint}`);
+    speakText(getWrongVoiceText(currentQuestion));
   };
 
   const handleAnswer = (code: string) => {
@@ -422,8 +420,74 @@ const App = () => {
     recordAnswer(correct);
   };
 
+  const isNewDiscovery = (code: string) => !discoveredSet.has(code) && !sessionDiscovered.includes(code);
+
+  const getCorrectVoiceText = (question: Question, newDiscovery: boolean) => {
+    if (question.mode === 'paint') {
+      return newDiscovery
+        ? `Výborne. Farby sedia a ${question.answer.name} pribúda do albumu. ${getCountryStory(question.answer)}`
+        : `Výborne. Farby vlajky krajiny ${question.answer.name} sedia. ${getCountryStory(question.answer)}`;
+    }
+
+    if (question.mode === 'country') {
+      return newDiscovery
+        ? `Správne. Toto je vlajka krajiny ${question.answer.name} a pribúda do albumu. ${getCountryStory(question.answer)}`
+        : `Správne. Toto je vlajka krajiny ${question.answer.name}. ${getCountryStory(question.answer)}`;
+    }
+
+    if (question.mode === 'map') {
+      return newDiscovery
+        ? `Správne. Našiel si krajinu ${question.answer.name} na mape a pribúda do albumu. ${getCountryStory(question.answer)}`
+        : `Správne. Našiel si krajinu ${question.answer.name} na mape. ${getCountryStory(question.answer)}`;
+    }
+
+    return newDiscovery
+      ? `Správne. ${question.answer.name} pribúda do albumu. ${getCountryStory(question.answer)}`
+      : `Správne. Toto je ${question.answer.name}. ${getCountryStory(question.answer)}`;
+  };
+
+  const getWrongVoiceText = (question: Question) => {
+    if (question.mode === 'paint') {
+      return `Ešte nie. Vlajka krajiny ${question.answer.name} má iné poradie farieb. ${question.hint}`;
+    }
+
+    if (question.mode === 'map') {
+      return `Ešte nie. Správna krajina je ${question.answer.name}. ${question.hint}`;
+    }
+
+    return `Ešte nie. Správna odpoveď je ${question.answer.name}. ${question.hint}`;
+  };
+
+  const getFeedbackTitle = (question: Question, correct: boolean, newDiscovery: boolean) => {
+    if (!correct) {
+      if (question.mode === 'paint') return `Ešte nie. Toto bola vlajka krajiny ${question.answer.name}.`;
+      return `Takmer. Správne je ${question.answer.name}.`;
+    }
+
+    if (question.mode === 'paint') {
+      return newDiscovery ? 'Farby sedia, krajina pribudla do albumu.' : 'Farby sedia.';
+    }
+
+    if (question.mode === 'map') {
+      return newDiscovery ? 'Správne miesto, krajina pribudla do albumu.' : 'Správne miesto na mape.';
+    }
+
+    return newDiscovery ? 'Správne, krajina pribudla do albumu.' : 'Správne.';
+  };
+
+  const getFeedbackDetail = (question: Question, correct: boolean) => {
+    if (correct) return getCountryStory(question.answer);
+    if (question.mode === 'paint') {
+      const palette = getFlagPalette(question.answer.code);
+      return palette
+        ? `Správne poradie je: ${palette.labels.join(' · ')}. ${question.hint}`
+        : `Skús si všimnúť poradie farieb. ${question.hint}`;
+    }
+    return `${getKidFact(question.answer)} Tip: ${question.hint}`;
+  };
+
   const getQuestionTitle = (question: Question) => {
-    if (question.mode === 'paint') return 'Domaľuj vlajku podľa farieb.';
+    if (question.mode === 'paint') return 'Vyskladaj farby vlajky.';
     if (question.mode === 'country') return `Ktorá vlajka patrí krajine ${question.answer.name}?`;
     if (question.mode === 'map') return `Kde na mape je ${question.answer.name}?`;
     return 'Ktorej krajine patrí táto vlajka?';
@@ -785,8 +849,8 @@ const App = () => {
                 </p>
               </div>
               {currentQuestion.mode === 'paint' ? (
-                <div className="paint-stage" aria-label={`Domaľuj vlajku: ${currentQuestion.answer.name}`}>
-                  <span>Domaľuj vlajku</span>
+                <div className="paint-stage" aria-label={`Vyskladaj farby vlajky: ${currentQuestion.answer.name}`}>
+                  <span>Flag Painter</span>
                   <strong>{currentQuestion.answer.name}</strong>
                   <div className={`paint-canvas ${currentPalette?.orientation || 'horizontal'}`}>
                     {currentPalette?.colors.map((_, index) => (
@@ -802,7 +866,7 @@ const App = () => {
                       </button>
                     ))}
                   </div>
-                  <small>Ťukaj farby v poradí, v akom majú byť na vlajke.</small>
+                  <small>Ťukaj farby zhora nadol alebo zľava doprava.</small>
                 </div>
               ) : currentQuestion.mode === 'country' ? (
                 <div className="country-stage" aria-label={`Vyber vlajku: ${currentQuestion.answer.name}`}>
@@ -913,32 +977,30 @@ const App = () => {
             )}
           </div>
 
-          {answered && (
-            <div className={`feedback ${selectedCode === currentQuestion.answer.code ? 'won-sticker' : ''}`}>
-              {selectedCode === currentQuestion.answer.code ? (
-                <img className="feedback-flag" alt="" src={currentQuestion.answer.flagUrl} />
-              ) : (
-                <div className="try-again-mark" aria-hidden="true">
-                  ?
+          {answered &&
+            (() => {
+              const correct = selectedCode === currentQuestion.answer.code;
+              const newDiscovery = !discoveredSet.has(currentQuestion.answer.code);
+
+              return (
+                <div className={`feedback ${correct ? 'won-sticker' : ''}`}>
+                  {correct ? (
+                    <img className="feedback-flag" alt="" src={currentQuestion.answer.flagUrl} />
+                  ) : (
+                    <div className="try-again-mark" aria-hidden="true">
+                      ?
+                    </div>
+                  )}
+                  <div>
+                    <strong>{getFeedbackTitle(currentQuestion, correct, newDiscovery)}</strong>
+                    <span>{getFeedbackDetail(currentQuestion, correct)}</span>
+                  </div>
+                  <button className="next-button" type="button" onClick={nextQuestion}>
+                    {questionIndex + 1 >= questions.length ? 'Vyhodnotiť' : 'Ďalšia vlajka'}
+                  </button>
                 </div>
-              )}
-              <div>
-                <strong>
-                  {selectedCode === currentQuestion.answer.code
-                    ? 'Správne, nová vlajka je v albume!'
-                    : `Takmer. Správne je ${currentQuestion.answer.name}.`}
-                </strong>
-                <span>
-                  {selectedCode === currentQuestion.answer.code
-                    ? getCountryStory(currentQuestion.answer)
-                    : `${getKidFact(currentQuestion.answer)} Tip: ${currentQuestion.hint}`}
-                </span>
-              </div>
-              <button className="next-button" type="button" onClick={nextQuestion}>
-                {questionIndex + 1 >= questions.length ? 'Vyhodnotiť' : 'Ďalšia vlajka'}
-              </button>
-            </div>
-          )}
+              );
+            })()}
         </section>
       )}
 
@@ -952,10 +1014,13 @@ const App = () => {
           <Trophy size={58} />
           <h2>{passed ? 'Level splnený' : 'Ešte jedna výprava'}</h2>
           <p>
-            Skóre {score}/{activeLevel.questionCount}. Do albumu pribudlo {sessionDiscovered.length} vlajok.
+            Skóre {score}/{activeLevel.questionCount}.{' '}
+            {newSessionDiscoveries.length
+              ? `Do albumu pribudlo ${newSessionDiscoveries.length} nových vlajok.`
+              : 'Precvičili sme vlajky, ktoré už sú v albume.'}
           </p>
           <div className="reward-strip">
-            {sessionDiscovered.slice(0, 6).map((code) => {
+            {(newSessionDiscoveries.length ? newSessionDiscoveries : sessionDiscovered).slice(0, 6).map((code) => {
               const country = countries.find((item) => item.code === code);
               return country ? (
                 <article className="mini-flag-card" key={code}>
