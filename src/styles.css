@@ -849,6 +849,7 @@ h1 {
   min-height: 78px;
   padding: 12px 15px;
   text-align: left;
+  text-transform: uppercase;
 }
 
 .answer-letter {
@@ -889,6 +890,7 @@ h1 {
   display: grid;
   gap: 10px;
   grid-template-columns: auto 1fr;
+  text-transform: uppercase;
 }
 
 .flag-answer-content img {

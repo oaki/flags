@@ -529,8 +529,8 @@
   },
   {
     "code": "DJ",
-    "name": "ǅibutsko",
-    "officialName": "ǅibutská republika",
+    "name": "Džibutsko",
+    "officialName": "Džibutská republika",
     "region": "Africa",
     "subregion": "Eastern Africa",
     "independent": true,
@@ -661,7 +661,7 @@
   },
   {
     "code": "TF",
-    "name": "Francúzske juŽné a antarktické územia",
+    "name": "Francúzske južné a antarktické územia",
     "officialName": "Francúzske južné a antarktické územia",
     "region": "Antarctic",
     "subregion": "Svet",
@@ -727,7 +727,7 @@
   },
   {
     "code": "GR",
-    "name": "Greécko",
+    "name": "Grécko",
     "officialName": "Grécka republika",
     "region": "Europe",
     "subregion": "Southern Europe",
@@ -837,7 +837,7 @@
   },
   {
     "code": "GF",
-    "name": "Guyana",
+    "name": "Francúzska Guyana",
     "officialName": "Francúzska Guyana",
     "region": "Americas",
     "subregion": "South America",
@@ -881,7 +881,7 @@
   },
   {
     "code": "NL",
-    "name": "Holansko",
+    "name": "Holandsko",
     "officialName": "Holandské kráľovstvo",
     "region": "Europe",
     "subregion": "Western Europe",
@@ -1244,7 +1244,7 @@
   },
   {
     "code": "CD",
-    "name": "Kongo",
+    "name": "Konžská demokratická republika",
     "officialName": "Konžská demokratická republika",
     "region": "Africa",
     "subregion": "Middle Africa",
@@ -1255,7 +1255,7 @@
   },
   {
     "code": "CG",
-    "name": "Kongo",
+    "name": "Konžská republika",
     "officialName": "Konžská republika",
     "region": "Africa",
     "subregion": "Middle Africa",
@@ -1508,7 +1508,7 @@
   },
   {
     "code": "IM",
-    "name": "Man",
+    "name": "Ostrov Man",
     "officialName": "Ostrov Man",
     "region": "Europe",
     "subregion": "Northern Europe",
@@ -1926,7 +1926,7 @@
   },
   {
     "code": "CI",
-    "name": "Pobržie Slonoviny",
+    "name": "Pobrežie Slonoviny",
     "officialName": "Republika Pobrežie Slonoviny",
     "region": "Africa",
     "subregion": "Western Africa",
