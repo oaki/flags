@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Vlajkový svet">
+  <rect width="512" height="512" rx="108" fill="#fff7ed"/>
+  <circle cx="146" cy="142" r="84" fill="#fde68a"/>
+  <circle cx="380" cy="126" r="70" fill="#bae6fd"/>
+  <circle cx="396" cy="394" r="82" fill="#bbf7d0"/>
+  <path d="M148 352c42 44 120 54 177 13 65-47 81-137 35-202-47-66-138-81-203-35-63 45-80 130-41 195" fill="#38bdf8"/>
+  <path d="M138 246c23 3 39 16 54 38 11 17 27 21 44 10 18-11 19-29 8-45-14-21-12-36 9-48 26-15 28-40 8-56-32 0-65 11-92 31-25 18-42 43-51 70z" fill="#22c55e"/>
+  <path d="M326 186c-22 13-27 34-15 55 9 16 5 29-13 41-23 16-26 37-9 55 28-8 54-23 74-46 27-32 36-71 28-109-20-9-42-8-65 4z" fill="#16a34a"/>
+  <path d="M151 112h178c26 0 48 21 48 48v104c0 26-22 48-48 48H151V112z" fill="#ffffff" stroke="#1f2937" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M151 112h226v67H151z" fill="#ef4444"/>
+  <path d="M151 179h226v66H151z" fill="#ffffff"/>
+  <path d="M151 245h226v67H151z" fill="#2563eb"/>
+  <path d="M124 94v324" stroke="#1f2937" stroke-width="24" stroke-linecap="round"/>
+  <path d="M114 421h79" stroke="#1f2937" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="392" cy="382" r="44" fill="#ffffff"/>
+  <path d="M369 389c9 20 39 20 48 0" fill="none" stroke="#1f2937" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="376" cy="369" r="6" fill="#1f2937"/>
+  <circle cx="410" cy="369" r="6" fill="#1f2937"/>
+</svg>
