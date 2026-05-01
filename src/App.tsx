@@ -7,6 +7,7 @@ import {
   Globe2,
   Lock,
   Map,
+  MapPin,
   BookOpen,
   BarChart3,
   Eye,
@@ -24,7 +25,7 @@ import packageInfo from '../package.json';
 import { countries } from './data/countries';
 import { Level, levels, maxLevelId } from './data/levels';
 import { getCountryStory, getKidFact } from './data/countryFacts';
-import { createQuestions, Difficulty, GameMode, getFlagPalette, Question } from './game';
+import { createQuestions, Difficulty, europeMapPoints, GameMode, getFlagPalette, Question } from './game';
 import { AnswerRecord, useProgress } from './hooks/useProgress';
 
 type Screen = 'levels' | 'quiz' | 'result' | 'album' | 'parent';
@@ -47,30 +48,6 @@ const modeStorageKey = 'flag-world-kids-mode-v1';
 
 const getTodayKey = () => new Date().toISOString().slice(0, 10);
 
-const europeMapPoints = [
-  { code: 'IS', x: 20, y: 14 },
-  { code: 'IE', x: 18, y: 44 },
-  { code: 'GB', x: 27, y: 39 },
-  { code: 'NO', x: 48, y: 17 },
-  { code: 'SE', x: 58, y: 22 },
-  { code: 'FI', x: 69, y: 19 },
-  { code: 'DK', x: 45, y: 38 },
-  { code: 'NL', x: 38, y: 49 },
-  { code: 'BE', x: 36, y: 56 },
-  { code: 'FR', x: 33, y: 67 },
-  { code: 'ES', x: 25, y: 83 },
-  { code: 'DE', x: 48, y: 56 },
-  { code: 'PL', x: 60, y: 54 },
-  { code: 'CZ', x: 53, y: 62 },
-  { code: 'AT', x: 51, y: 70 },
-  { code: 'SK', x: 59, y: 66 },
-  { code: 'HU', x: 61, y: 73 },
-  { code: 'IT', x: 48, y: 83 },
-  { code: 'RO', x: 72, y: 75 },
-  { code: 'GR', x: 70, y: 91 },
-  { code: 'UA', x: 78, y: 62 },
-] satisfies { code: string; x: number; y: number }[];
-
 const difficultyLabels = {
   baby: {
     title: 'Baby Explorer',
@@ -90,6 +67,14 @@ const modeLabels = {
   journey: {
     title: 'Cesta Európou',
     subtitle: 'Nové a slabšie krajiny sa vracajú častejšie',
+  },
+  country: {
+    title: 'Guess the Country',
+    subtitle: 'Pozri názov krajiny a vyber správnu vlajku',
+  },
+  map: {
+    title: 'Find on Map',
+    subtitle: 'Nájdi krajinu na mape Európy',
   },
   similar: {
     title: 'Podobné vlajky',
@@ -113,6 +98,14 @@ const buildQuestionSpeech = (question: Question) => {
       .join(' ');
 
     return `Domaľuj vlajku krajiny ${question.answer.name}. Vyber správne farby. ${options}`;
+  }
+
+  if (question.mode === 'country') {
+    return `Nájdi vlajku krajiny ${question.answer.name}. Vyber správny obrázok vlajky.`;
+  }
+
+  if (question.mode === 'map') {
+    return `Nájdi na mape krajinu ${question.answer.name}. Ťukni na správny bod.`;
   }
 
   const options = question.options
@@ -181,6 +174,11 @@ const App = () => {
   const passed = score >= activeLevel.targetScore;
   const selectedVoice = voices.find((voice) => voice.voiceURI === selectedVoiceURI) || findBestVoice(voices);
   const currentPalette = currentQuestion ? getFlagPalette(currentQuestion.answer.code) : undefined;
+  const mapChoices = useMemo(() => {
+    if (!currentQuestion) return [];
+    const optionCodes = new Set(currentQuestion.options.map((option) => option.code));
+    return europeMapPoints.filter((point) => optionCodes.has(point.code));
+  }, [currentQuestion]);
   const paintChoices = useMemo(() => {
     if (!currentQuestion) return [];
     const colors = currentQuestion.options.flatMap((option) => getFlagPalette(option.code)?.colors || []);
@@ -424,6 +422,13 @@ const App = () => {
     recordAnswer(correct);
   };
 
+  const getQuestionTitle = (question: Question) => {
+    if (question.mode === 'paint') return 'Domaľuj vlajku podľa farieb.';
+    if (question.mode === 'country') return `Ktorá vlajka patrí krajine ${question.answer.name}?`;
+    if (question.mode === 'map') return `Kde na mape je ${question.answer.name}?`;
+    return 'Ktorej krajine patrí táto vlajka?';
+  };
+
   const nextQuestion = () => {
     if (!currentQuestion) return;
 
@@ -585,6 +590,7 @@ const App = () => {
                 {(Object.keys(modeLabels) as GameMode[]).map((key) => (
                   <button className={mode === key ? 'active' : ''} key={key} onClick={() => changeMode(key)} type="button">
                     {key === 'paint' && <Brush size={18} />}
+                    {key === 'map' && <MapPin size={18} />}
                     <strong>{modeLabels[key].title}</strong>
                     <span>{modeLabels[key].subtitle}</span>
                   </button>
@@ -769,7 +775,7 @@ const App = () => {
             <div className="flag-stage">
               <div className="question-copy">
                 <span className="continent">{regionNames[currentQuestion.answer.region]}</span>
-                <h2>{currentQuestion.mode === 'paint' ? 'Domaľuj vlajku podľa farieb.' : 'Ktorej krajine patrí táto vlajka?'}</h2>
+                <h2>{getQuestionTitle(currentQuestion)}</h2>
                 <p className="quiz-hint">
                   {modeLabels[currentQuestion.mode].title} · {difficultyLabels[difficulty].title}
                 </p>
@@ -797,6 +803,18 @@ const App = () => {
                     ))}
                   </div>
                   <small>Ťukaj farby v poradí, v akom majú byť na vlajke.</small>
+                </div>
+              ) : currentQuestion.mode === 'country' ? (
+                <div className="country-stage" aria-label={`Vyber vlajku: ${currentQuestion.answer.name}`}>
+                  <span>Hľadaná krajina</span>
+                  <strong>{currentQuestion.answer.name}</strong>
+                  <small>{regionNames[currentQuestion.answer.region]}</small>
+                </div>
+              ) : currentQuestion.mode === 'map' ? (
+                <div className="map-question-stage" aria-label={`Nájdi na mape: ${currentQuestion.answer.name}`}>
+                  <span>Hľadaná krajina</span>
+                  <strong>{currentQuestion.answer.name}</strong>
+                  <small>Ťukni na správny bod na mape.</small>
                 </div>
               ) : (
                 <div className="flag-frame">
@@ -834,8 +852,35 @@ const App = () => {
                   </button>
                 </div>
               </div>
+            ) : currentQuestion.mode === 'map' ? (
+              <div className="find-map" aria-label="Možnosti na mape">
+                <span className="map-land land-west" />
+                <span className="map-land land-north" />
+                <span className="map-land land-east" />
+                <span className="map-land land-south" />
+                {mapChoices.map((point) => {
+                  const country = countries.find((item) => item.code === point.code);
+                  const isCorrect = point.code === currentQuestion.answer.code;
+                  const isSelected = point.code === selectedCode;
+                  const statusClass = answered && isCorrect ? 'correct' : answered && isSelected ? 'wrong' : '';
+
+                  return (
+                    <button
+                      aria-label={country?.name || point.code}
+                      className={`find-map-point ${statusClass}`}
+                      disabled={answered}
+                      key={point.code}
+                      onClick={() => handleAnswer(point.code)}
+                      style={{ left: `${point.x}%`, top: `${point.y}%` }}
+                      type="button"
+                    >
+                      {point.code}
+                    </button>
+                  );
+                })}
+              </div>
             ) : (
-              <div className="answers" aria-label="Možnosti odpovede">
+              <div className={`answers ${currentQuestion.mode === 'country' ? 'flag-answers' : ''}`} aria-label="Možnosti odpovede">
                 {currentQuestion.options.map((option) => {
                   const isCorrect = option.code === currentQuestion.answer.code;
                   const isSelected = option.code === selectedCode;
@@ -851,7 +896,14 @@ const App = () => {
                       <span className="answer-letter" aria-hidden="true">
                         {getOptionLabel(currentQuestion.options.findIndex((item) => item.code === option.code))}
                       </span>
-                      <span>{option.name}</span>
+                      {currentQuestion.mode === 'country' ? (
+                        <span className="flag-answer-content">
+                          <img alt="" src={option.flagUrl} />
+                          <span>{option.name}</span>
+                        </span>
+                      ) : (
+                        <span>{option.name}</span>
+                      )}
                       {answered && isCorrect && <CheckCircle2 size={24} />}
                       {answered && isSelected && !isCorrect && <XCircle size={24} />}
                     </button>

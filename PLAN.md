@@ -14,6 +14,7 @@ Turn the app from a plain flag quiz into a Europe-first world journey for kids:
 
 - Add difficulty presets: Baby Explorer, Junior Quiz, Flag Master.
 - Add mode switch: Journey and Similar Flags.
+- Add Guess the Country and Find on Map modes.
 - Add a Flag Painter mode with tap-to-fill color slots.
 - Add daily challenge and achievement feedback.
 - Prefer weak countries and undiscovered countries when selecting questions.
@@ -25,6 +26,6 @@ Turn the app from a plain flag quiz into a Europe-first world journey for kids:
 
 - Add a simple Europe map screen.
 - Expand Flag Painter into drag/drop with flag-specific symbols and crests where useful.
-- Replace the mini Europe progress grid with a real geographic SVG map.
+- Replace the stylized Europe map with a real geographic SVG map.
 - Add daily challenge and printable worksheets.
 - Add Slovak/English language switch.

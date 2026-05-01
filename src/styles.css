@@ -386,7 +386,7 @@ h1 {
 }
 
 .setting-group.modes {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .setting-group button {
@@ -752,7 +752,9 @@ h1 {
   transform: rotate(1.5deg);
 }
 
-.paint-stage {
+.paint-stage,
+.country-stage,
+.map-question-stage {
   align-content: center;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.65) 12px, transparent 12px) 0 0 / 38px 38px,
@@ -769,11 +771,15 @@ h1 {
   text-align: center;
 }
 
-.paint-stage svg {
+.paint-stage svg,
+.country-stage svg,
+.map-question-stage svg {
   color: #0f766e;
 }
 
-.paint-stage > span {
+.paint-stage > span,
+.country-stage > span,
+.map-question-stage > span {
   color: #ef4444;
   font-size: 0.86rem;
   font-weight: 950;
@@ -781,18 +787,34 @@ h1 {
   text-transform: uppercase;
 }
 
-.paint-stage strong {
+.paint-stage strong,
+.country-stage strong,
+.map-question-stage strong {
   font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 950;
   line-height: 1;
   margin-top: 6px;
 }
 
-.paint-stage small {
+.paint-stage small,
+.country-stage small,
+.map-question-stage small {
   color: #5f6f89;
   font-size: 1rem;
   font-weight: 850;
   margin-top: 10px;
+}
+
+.country-stage {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.7) 12px, transparent 12px) 0 0 / 38px 38px,
+    #dcfce7;
+}
+
+.map-question-stage {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.7) 12px, transparent 12px) 0 0 / 38px 38px,
+    #fef3c7;
 }
 
 .flag-image {
@@ -849,6 +871,75 @@ h1 {
 }
 
 .answer-button.wrong {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.flag-answers {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flag-answers .answer-button {
+  min-height: 118px;
+}
+
+.flag-answer-content {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 1fr;
+}
+
+.flag-answer-content img {
+  aspect-ratio: 16 / 10;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  object-fit: contain;
+  padding: 4px;
+  width: 98px;
+}
+
+.find-map {
+  aspect-ratio: 16 / 9;
+  background:
+    linear-gradient(180deg, rgba(186, 230, 253, 0.72), rgba(219, 234, 254, 0.78)),
+    #dbeafe;
+  border: 5px solid #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 18px 42px rgba(36, 48, 71, 0.12);
+  min-height: 360px;
+  overflow: hidden;
+  position: relative;
+}
+
+.find-map-point {
+  align-items: center;
+  background: #ffffff;
+  border: 3px solid #bfdbfe;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(36, 48, 71, 0.2);
+  color: #1d4ed8;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.86rem;
+  font-weight: 950;
+  height: 46px;
+  justify-content: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  z-index: 2;
+}
+
+.find-map-point.correct {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+.find-map-point.wrong {
   background: #fee2e2;
   border-color: #ef4444;
   color: #991b1b;

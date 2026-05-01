@@ -2,7 +2,7 @@ import { Country, countries, getCountryByCode } from './data/countries';
 import { Level } from './data/levels';
 
 export type Difficulty = 'baby' | 'junior' | 'master';
-export type GameMode = 'journey' | 'similar' | 'paint';
+export type GameMode = 'journey' | 'country' | 'map' | 'similar' | 'paint';
 
 export type FlagPalette = {
   orientation: 'horizontal' | 'vertical' | 'cross' | 'symbol';
@@ -40,6 +40,30 @@ const similarFlagGroups = [
   ['AT', 'LV', 'LB'],
   ['GB', 'AU', 'NZ', 'FJ'],
 ];
+
+export const europeMapPoints = [
+  { code: 'IS', x: 20, y: 14 },
+  { code: 'IE', x: 18, y: 44 },
+  { code: 'GB', x: 27, y: 39 },
+  { code: 'NO', x: 48, y: 17 },
+  { code: 'SE', x: 58, y: 22 },
+  { code: 'FI', x: 69, y: 19 },
+  { code: 'DK', x: 45, y: 38 },
+  { code: 'NL', x: 38, y: 49 },
+  { code: 'BE', x: 36, y: 56 },
+  { code: 'FR', x: 33, y: 67 },
+  { code: 'ES', x: 25, y: 83 },
+  { code: 'DE', x: 48, y: 56 },
+  { code: 'PL', x: 60, y: 54 },
+  { code: 'CZ', x: 53, y: 62 },
+  { code: 'AT', x: 51, y: 70 },
+  { code: 'SK', x: 59, y: 66 },
+  { code: 'HU', x: 61, y: 73 },
+  { code: 'IT', x: 48, y: 83 },
+  { code: 'RO', x: 72, y: 75 },
+  { code: 'GR', x: 70, y: 91 },
+  { code: 'UA', x: 78, y: 62 },
+] satisfies { code: string; x: number; y: number }[];
 
 const flagPalettes: Record<string, FlagPalette> = {
   SK: { orientation: 'horizontal', colors: ['#ffffff', '#1d4ed8', '#dc2626'], labels: ['biela', 'modrá', 'červená'] },
@@ -116,8 +140,15 @@ const pickDistractors = (answer: Country, pool: Country[], optionCount: number, 
   const sameRegion = pool.filter((country) => country.code !== answer.code && country.region === answer.region);
   const backup = countries.filter((country) => country.code !== answer.code);
   const paintPool = pool.filter((country) => flagPalettes[country.code]);
+  const mapPool = pool.filter((country) => europeMapPoints.some((point) => point.code === country.code));
   const preferred =
-    mode === 'similar' ? [...similar, ...sameRegion] : mode === 'paint' ? [...paintPool, ...sameRegion] : [...sameRegion, ...similar];
+    mode === 'similar'
+      ? [...similar, ...sameRegion]
+      : mode === 'paint'
+        ? [...paintPool, ...sameRegion]
+        : mode === 'map'
+          ? [...mapPool, ...sameRegion]
+          : [...sameRegion, ...similar];
 
   return shuffle([...preferred, ...backup])
     .filter((country, index, list) => list.findIndex((item) => item.code === country.code) === index)
@@ -134,6 +165,12 @@ const buildQuestionPool = (level: Level, settings: QuestionSettings) => {
     return paintPool.length >= 4 ? paintPool : pool;
   }
 
+  if (settings.mode === 'map') {
+    const mappableCodes = new Set(europeMapPoints.map((point) => point.code));
+    const mapPool = pool.filter((country) => mappableCodes.has(country.code));
+    return mapPool.length >= 4 ? mapPool : pool;
+  }
+
   if (settings.mode !== 'similar') return pool;
 
   const similarCodes = new Set(similarFlagGroups.flat());
@@ -147,6 +184,7 @@ const weightCountry = (country: Country, settings: QuestionSettings) => {
   if (!settings.discoveredCountryCodes?.includes(country.code)) weight += 2;
   if (settings.mode === 'similar' && getSimilarCodes(country.code).length > 0) weight += 2;
   if (settings.mode === 'paint' && flagPalettes[country.code]) weight += 3;
+  if (settings.mode === 'map' && europeMapPoints.some((point) => point.code === country.code)) weight += 3;
   return weight;
 };
 
@@ -156,6 +194,8 @@ const weightedShuffle = (pool: Country[], settings: QuestionSettings) =>
 const getHint = (answer: Country, mode: GameMode) => {
   if (countryHints[answer.code]) return countryHints[answer.code];
   if (mode === 'paint') return 'Vyber farebné rozloženie vlajky. Poradie farieb je dôležité.';
+  if (mode === 'country') return 'Pozri sa na názov krajiny a vyber vlajku, ktorá k nej patrí.';
+  if (mode === 'map') return 'Nájdi krajinu na mape. Pomôže ti jej poloha medzi susedmi.';
   if (mode === 'similar') return 'Všímaj si poradie farieb, smer pruhov a malé znaky na vlajke.';
   if (answer.region === 'Europe') return 'Táto krajina je v Európe. Skús si všimnúť farby a znak.';
   return `Táto krajina leží v regióne ${answer.region}. Hľadaj výrazný tvar alebo farby.`;
