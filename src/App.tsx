@@ -25,7 +25,7 @@ import packageInfo from '../package.json';
 import { countries } from './data/countries';
 import { Level, levels, maxLevelId } from './data/levels';
 import { getCountryStory, getKidFact } from './data/countryFacts';
-import { createQuestions, Difficulty, europeMapPoints, GameMode, getFlagPalette, Question } from './game';
+import { createQuestions, Difficulty, europeMapShapes, GameMode, getFlagPalette, Question } from './game';
 import { AnswerRecord, useProgress } from './hooks/useProgress';
 
 type Screen = 'levels' | 'quiz' | 'result' | 'album' | 'parent';
@@ -87,6 +87,66 @@ const modeLabels = {
 } satisfies Record<GameMode, { title: string; subtitle: string }>;
 
 const getOptionLabel = (index: number) => String.fromCharCode(65 + index);
+
+type EuropeMapProps = {
+  answerCode?: string;
+  answered?: boolean;
+  availableCodes?: string[];
+  discoveredSet?: Set<string>;
+  onPick?: (code: string) => void;
+  selectedCode?: string | null;
+  variant: 'overview' | 'quiz';
+};
+
+const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
+  const availableSet = availableCodes ? new Set(availableCodes) : null;
+
+  return (
+    <svg className={`europe-map-svg ${variant}`} role="img" viewBox="0 0 1080 980" aria-label="Mapa Európy s krajinami">
+      <rect className="europe-sea" x="0" y="0" width="1080" height="980" rx="36" />
+      {europeMapShapes.map((shape) => {
+        const country = countries.find((item) => item.code === shape.code);
+        const isAvailable = !availableSet || availableSet.has(shape.code);
+        const isCorrect = answered && shape.code === answerCode;
+        const isWrong = answered && selectedCode === shape.code && selectedCode !== answerCode;
+        const isFound = discoveredSet?.has(shape.code);
+        const className = [
+          'europe-country',
+          isAvailable ? 'available' : 'muted',
+          isFound ? 'found' : '',
+          isCorrect ? 'correct' : '',
+          isWrong ? 'wrong' : '',
+        ]
+          .filter(Boolean)
+          .join(' ');
+
+        return (
+          <g
+            aria-label={country?.name || shape.code}
+            className={className}
+            key={shape.code}
+            onClick={() => {
+              if (!answered && isAvailable) onPick?.(shape.code);
+            }}
+            onKeyDown={(event) => {
+              if (!answered && isAvailable && (event.key === 'Enter' || event.key === ' ')) {
+                event.preventDefault();
+                onPick?.(shape.code);
+              }
+            }}
+            role={variant === 'quiz' && isAvailable ? 'button' : 'img'}
+            tabIndex={variant === 'quiz' && isAvailable && !answered ? 0 : -1}
+          >
+            <path d={shape.d} />
+            <text x={shape.labelX} y={shape.labelY}>
+              {shape.code}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
 
 const buildQuestionSpeech = (question: Question) => {
   if (question.mode === 'paint') {
@@ -171,10 +231,10 @@ const App = () => {
   const newSessionDiscoveries = sessionDiscovered.filter((code) => !discoveredSet.has(code));
   const selectedVoice = voices.find((voice) => voice.voiceURI === selectedVoiceURI) || findBestVoice(voices);
   const currentPalette = currentQuestion ? getFlagPalette(currentQuestion.answer.code) : undefined;
-  const mapChoices = useMemo(() => {
+  const mapChoiceCodes = useMemo(() => {
     if (!currentQuestion) return [];
     const optionCodes = new Set(currentQuestion.options.map((option) => option.code));
-    return europeMapPoints.filter((point) => optionCodes.has(point.code));
+    return europeMapShapes.filter((shape) => optionCodes.has(shape.code)).map((shape) => shape.code);
   }, [currentQuestion]);
   const paintChoices = useMemo(() => {
     if (!currentQuestion) return [];
@@ -594,24 +654,7 @@ const App = () => {
                 <span>európskych krajín objavených</span>
               </div>
               <div className="mini-europe-map">
-                <span className="map-land land-west" />
-                <span className="map-land land-north" />
-                <span className="map-land land-east" />
-                <span className="map-land land-south" />
-                {europeMapPoints.map((point) => {
-                  const country = countries.find((item) => item.code === point.code);
-
-                  return (
-                    <span
-                      className={`map-point ${discoveredSet.has(point.code) ? 'found' : ''}`}
-                      key={point.code}
-                      style={{ left: `${point.x}%`, top: `${point.y}%` }}
-                      title={country?.name || point.code}
-                    >
-                      {point.code}
-                    </span>
-                  );
-                })}
+                <EuropeMap variant="overview" discoveredSet={discoveredSet} />
               </div>
             </div>
             <div className="achievement-strip" aria-label="Odznaky">
@@ -918,30 +961,14 @@ const App = () => {
               </div>
             ) : currentQuestion.mode === 'map' ? (
               <div className="find-map" aria-label="Možnosti na mape">
-                <span className="map-land land-west" />
-                <span className="map-land land-north" />
-                <span className="map-land land-east" />
-                <span className="map-land land-south" />
-                {mapChoices.map((point) => {
-                  const country = countries.find((item) => item.code === point.code);
-                  const isCorrect = point.code === currentQuestion.answer.code;
-                  const isSelected = point.code === selectedCode;
-                  const statusClass = answered && isCorrect ? 'correct' : answered && isSelected ? 'wrong' : '';
-
-                  return (
-                    <button
-                      aria-label={country?.name || point.code}
-                      className={`find-map-point ${statusClass}`}
-                      disabled={answered}
-                      key={point.code}
-                      onClick={() => handleAnswer(point.code)}
-                      style={{ left: `${point.x}%`, top: `${point.y}%` }}
-                      type="button"
-                    >
-                      {point.code}
-                    </button>
-                  );
-                })}
+                <EuropeMap
+                  answerCode={currentQuestion.answer.code}
+                  answered={answered}
+                  availableCodes={mapChoiceCodes}
+                  onPick={handleAnswer}
+                  selectedCode={selectedCode}
+                  variant="quiz"
+                />
               </div>
             ) : (
               <div className={`answers ${currentQuestion.mode === 'country' ? 'flag-answers' : ''}`} aria-label="Možnosti odpovede">
