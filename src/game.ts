@@ -41,35 +41,29 @@ const similarFlagGroups = [
   ['GB', 'AU', 'NZ', 'FJ'],
 ];
 
-export const europeMapShapes = [
-  { code: 'IS', d: 'M88 40 L132 34 L150 58 L128 82 L84 74 L68 52 Z', labelX: 110, labelY: 60 },
-  { code: 'IE', d: 'M80 206 L118 190 L142 216 L128 256 L86 258 L66 232 Z', labelX: 104, labelY: 226 },
-  { code: 'GB', d: 'M154 164 L208 146 L238 184 L226 244 L182 270 L142 232 Z', labelX: 190, labelY: 210 },
-  { code: 'NO', d: 'M324 56 L390 34 L434 72 L420 156 L362 186 L318 140 Z', labelX: 374, labelY: 106 },
-  { code: 'SE', d: 'M430 82 L492 58 L542 104 L522 224 L464 240 L420 158 Z', labelX: 476, labelY: 158 },
-  { code: 'FI', d: 'M544 74 L626 70 L670 130 L636 226 L540 220 L558 144 Z', labelX: 604, labelY: 150 },
-  { code: 'DK', d: 'M360 238 L410 224 L438 254 L410 286 L362 278 Z', labelX: 396, labelY: 256 },
-  { code: 'NL', d: 'M296 292 L348 284 L366 326 L332 360 L286 342 Z', labelX: 326, labelY: 320 },
-  { code: 'BE', d: 'M306 362 L366 344 L396 386 L360 430 L300 414 Z', labelX: 348, labelY: 390 },
-  { code: 'FR', d: 'M214 406 L352 398 L424 466 L390 594 L270 638 L162 570 L150 464 Z', labelX: 296, labelY: 512 },
-  { code: 'ES', d: 'M118 628 L280 636 L328 734 L220 814 L84 762 L46 670 Z', labelX: 200, labelY: 708 },
-  { code: 'DE', d: 'M392 304 L494 292 L542 382 L512 486 L414 468 L364 386 Z', labelX: 456, labelY: 390 },
-  { code: 'PL', d: 'M536 292 L682 300 L734 386 L684 472 L526 454 L504 362 Z', labelX: 622, labelY: 384 },
-  { code: 'CZ', d: 'M438 484 L536 466 L594 510 L546 566 L438 552 L398 514 Z', labelX: 500, labelY: 518 },
-  { code: 'AT', d: 'M402 568 L534 568 L586 616 L536 672 L400 650 L362 606 Z', labelX: 482, labelY: 616 },
-  { code: 'SK', d: 'M590 532 L684 514 L732 558 L692 614 L588 600 L550 560 Z', labelX: 644, labelY: 562 },
-  { code: 'HU', d: 'M558 622 L694 622 L750 676 L692 734 L552 710 L518 662 Z', labelX: 636, labelY: 674 },
-  { code: 'IT', d: 'M414 684 L506 684 L560 792 L626 868 L578 938 L498 844 L434 812 Z', labelX: 512, labelY: 786 },
-  { code: 'RO', d: 'M720 650 L856 630 L932 704 L884 808 L724 786 L674 712 Z', labelX: 802, labelY: 718 },
-  { code: 'GR', d: 'M676 838 L784 812 L866 878 L826 944 L700 938 L638 884 Z', labelX: 752, labelY: 884 },
-  { code: 'UA', d: 'M740 438 L956 428 L1038 548 L946 650 L744 612 L692 516 Z', labelX: 866, labelY: 536 },
-] satisfies { code: string; d: string; labelX: number; labelY: number }[];
-
-export const europeMapPoints = europeMapShapes.map((shape) => ({
-  code: shape.code,
-  x: (shape.labelX / 1080) * 100,
-  y: (shape.labelY / 980) * 100,
-}));
+export const europeMapPoints = [
+  { code: 'IS', x: 15, y: 15 },
+  { code: 'IE', x: 24, y: 45 },
+  { code: 'GB', x: 31, y: 39 },
+  { code: 'NO', x: 48, y: 19 },
+  { code: 'SE', x: 57, y: 29 },
+  { code: 'FI', x: 68, y: 25 },
+  { code: 'DK', x: 47, y: 43 },
+  { code: 'NL', x: 42, y: 51 },
+  { code: 'BE', x: 41, y: 55 },
+  { code: 'FR', x: 37, y: 64 },
+  { code: 'ES', x: 30, y: 79 },
+  { code: 'DE', x: 50, y: 53 },
+  { code: 'PL', x: 61, y: 53 },
+  { code: 'CZ', x: 53, y: 59 },
+  { code: 'AT', x: 52, y: 64 },
+  { code: 'SK', x: 59, y: 61 },
+  { code: 'HU', x: 60, y: 67 },
+  { code: 'IT', x: 52, y: 76 },
+  { code: 'RO', x: 70, y: 69 },
+  { code: 'GR', x: 67, y: 87 },
+  { code: 'UA', x: 76, y: 59 },
+] satisfies { code: string; x: number; y: number }[];
 
 const flagPalettes: Record<string, FlagPalette> = {
   SK: { orientation: 'horizontal', colors: ['#ffffff', '#1d4ed8', '#dc2626'], labels: ['biela', 'modrá', 'červená'] },

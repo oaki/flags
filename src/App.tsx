@@ -25,7 +25,7 @@ import packageInfo from '../package.json';
 import { countries } from './data/countries';
 import { Level, levels, maxLevelId } from './data/levels';
 import { getCountryStory, getKidFact } from './data/countryFacts';
-import { createQuestions, Difficulty, europeMapShapes, GameMode, getFlagPalette, Question } from './game';
+import { createQuestions, Difficulty, europeMapPoints, GameMode, getFlagPalette, Question } from './game';
 import { AnswerRecord, useProgress } from './hooks/useProgress';
 
 type Screen = 'levels' | 'quiz' | 'result' | 'album' | 'parent';
@@ -119,16 +119,16 @@ const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet
   const availableSet = availableCodes ? new Set(availableCodes) : null;
 
   return (
-    <svg className={`europe-map-svg ${variant}`} role="img" viewBox="0 0 1080 980" aria-label="Mapa Európy s krajinami">
-      <rect className="europe-sea" x="0" y="0" width="1080" height="980" rx="36" />
-      {europeMapShapes.map((shape) => {
-        const country = countries.find((item) => item.code === shape.code);
-        const isAvailable = !availableSet || availableSet.has(shape.code);
-        const isCorrect = answered && shape.code === answerCode;
-        const isWrong = answered && selectedCode === shape.code && selectedCode !== answerCode;
-        const isFound = discoveredSet?.has(shape.code);
+    <div className={`europe-real-map ${variant}`} role="img" aria-label="Reálna mapa Európy s krajinami">
+      {europeMapPoints.map((point) => {
+        const country = countries.find((item) => item.code === point.code);
+        const isAvailable = !availableSet || availableSet.has(point.code);
+        const isCorrect = answered && point.code === answerCode;
+        const isWrong = answered && selectedCode === point.code && selectedCode !== answerCode;
+        const isFound = discoveredSet?.has(point.code);
+        const isInteractive = variant === 'quiz' && isAvailable && !answered;
         const className = [
-          'europe-country',
+          'real-map-marker',
           isAvailable ? 'available' : 'muted',
           isFound ? 'found' : '',
           isCorrect ? 'correct' : '',
@@ -138,30 +138,23 @@ const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet
           .join(' ');
 
         return (
-          <g
-            aria-label={country?.name || shape.code}
+          <button
+            aria-label={country?.name || point.code}
             className={className}
-            key={shape.code}
+            disabled={!isInteractive}
+            key={point.code}
             onClick={() => {
-              if (!answered && isAvailable) onPick?.(shape.code);
+              onPick?.(point.code);
             }}
-            onKeyDown={(event) => {
-              if (!answered && isAvailable && (event.key === 'Enter' || event.key === ' ')) {
-                event.preventDefault();
-                onPick?.(shape.code);
-              }
-            }}
-            role={variant === 'quiz' && isAvailable ? 'button' : 'img'}
-            tabIndex={variant === 'quiz' && isAvailable && !answered ? 0 : -1}
+            style={{ left: `${point.x}%`, top: `${point.y}%` }}
+            title={country?.name || point.code}
+            type="button"
           >
-            <path d={shape.d} />
-            <text x={shape.labelX} y={shape.labelY}>
-              {shape.code}
-            </text>
-          </g>
+            {point.code}
+          </button>
         );
       })}
-    </svg>
+    </div>
   );
 };
 
@@ -251,7 +244,7 @@ const App = () => {
   const mapChoiceCodes = useMemo(() => {
     if (!currentQuestion) return [];
     const optionCodes = new Set(currentQuestion.options.map((option) => option.code));
-    return europeMapShapes.filter((shape) => optionCodes.has(shape.code)).map((shape) => shape.code);
+    return europeMapPoints.filter((point) => optionCodes.has(point.code)).map((point) => point.code);
   }, [currentQuestion]);
   const paintChoices = useMemo(() => {
     if (!currentQuestion) return [];
@@ -1133,6 +1126,14 @@ const App = () => {
             </select>
           </label>
         )}
+        <a
+          className="map-credit"
+          href="https://commons.wikimedia.org/wiki/File:Europe-countries-outline-iso-coded-plain.svg"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Mapa: Wikimedia Commons
+        </a>
         <span>Verzia {packageInfo.version}</span>
       </footer>
     </main>
