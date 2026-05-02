@@ -1,6 +1,7 @@
 import {
   CheckCircle2,
   Flag,
+  ArrowUp,
   Brush,
   Award,
   CalendarDays,
@@ -373,6 +374,14 @@ const App = () => {
     }
 
     speakText('Zvuk je zapnutý. Pri novej vlajke ti prečítam otázku aj možnosti.', true);
+  };
+
+  const scrollToTop = () => {
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch {
+      window.scrollTo(0, 0);
+    }
   };
 
   const changeVoice = (voiceURI: string) => {
@@ -793,6 +802,9 @@ const App = () => {
               );
             })}
           </div>
+          <button className="album-scroll-top" type="button" onClick={scrollToTop} aria-label="Späť hore">
+            <ArrowUp size={24} />
+          </button>
         </section>
       )}
 
