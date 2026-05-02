@@ -32,7 +32,8 @@ const defaultProgress: Progress = {
 
 const readProgress = (): Progress => {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    if (typeof window === 'undefined') return defaultProgress;
+    const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultProgress;
     return { ...defaultProgress, ...JSON.parse(raw) };
   } catch {
@@ -49,7 +50,11 @@ export const useProgress = () => {
   const [progress, setProgress] = useState<Progress>(readProgress);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    } catch {
+      // iOS Safari can disable localStorage in private or restricted browser modes.
+    }
   }, [progress]);
 
   const saveScore = useCallback((levelId: number, score: number, total: number, passed: boolean, discovered: string[], answers: AnswerRecord[], dailyDate?: string) => {

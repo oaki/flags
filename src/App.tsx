@@ -48,6 +48,23 @@ const modeStorageKey = 'flag-world-kids-mode-v1';
 
 const getTodayKey = () => new Date().toISOString().slice(0, 10);
 
+const safeGetStorage = (key: string) => {
+  try {
+    if (typeof window === 'undefined') return '';
+    return window.localStorage.getItem(key) || '';
+  } catch {
+    return '';
+  }
+};
+
+const safeSetStorage = (key: string, value: string) => {
+  try {
+    if (typeof window !== 'undefined') window.localStorage.setItem(key, value);
+  } catch {
+    // Safari private browsing and some child-safe browser shells can block storage.
+  }
+};
+
 const difficultyLabels = {
   baby: {
     title: 'Baby Explorer',
@@ -203,20 +220,20 @@ const App = () => {
   const [activeDailyDate, setActiveDailyDate] = useState<string | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>(() => {
     if (typeof window === 'undefined') return 'junior';
-    return (localStorage.getItem(difficultyStorageKey) as Difficulty) || 'junior';
+    return (safeGetStorage(difficultyStorageKey) as Difficulty) || 'junior';
   });
   const [mode, setMode] = useState<GameMode>(() => {
     if (typeof window === 'undefined') return 'journey';
-    return (localStorage.getItem(modeStorageKey) as GameMode) || 'journey';
+    return (safeGetStorage(modeStorageKey) as GameMode) || 'journey';
   });
   const [soundOn, setSoundOn] = useState(() => {
     if (typeof window === 'undefined') return false;
-    return localStorage.getItem(soundStorageKey) === 'true';
+    return safeGetStorage(soundStorageKey) === 'true';
   });
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoiceURI, setSelectedVoiceURI] = useState(() => {
     if (typeof window === 'undefined') return '';
-    return localStorage.getItem(voiceStorageKey) || '';
+    return safeGetStorage(voiceStorageKey);
   });
 
   const currentQuestion = questions[questionIndex];
@@ -309,16 +326,28 @@ const App = () => {
         const bestVoice = findBestVoice(availableVoices);
         if (bestVoice) {
           setSelectedVoiceURI(bestVoice.voiceURI);
-          localStorage.setItem(voiceStorageKey, bestVoice.voiceURI);
+          safeSetStorage(voiceStorageKey, bestVoice.voiceURI);
         }
       }
     };
 
     loadVoices();
-    window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+    const speechSynthesis = window.speechSynthesis as SpeechSynthesis & {
+      onvoiceschanged: ((event: Event) => void) | null;
+    };
+
+    if (typeof speechSynthesis.addEventListener === 'function') {
+      speechSynthesis.addEventListener('voiceschanged', loadVoices);
+    } else {
+      speechSynthesis.onvoiceschanged = loadVoices;
+    }
 
     return () => {
-      window.speechSynthesis.removeEventListener('voiceschanged', loadVoices);
+      if (typeof speechSynthesis.removeEventListener === 'function') {
+        speechSynthesis.removeEventListener('voiceschanged', loadVoices);
+      } else {
+        speechSynthesis.onvoiceschanged = null;
+      }
     };
   }, [selectedVoiceURI]);
 
@@ -338,7 +367,7 @@ const App = () => {
   const toggleSound = () => {
     const nextSound = !soundOn;
     setSoundOn(nextSound);
-    localStorage.setItem(soundStorageKey, String(nextSound));
+    safeSetStorage(soundStorageKey, String(nextSound));
 
     if (!nextSound) {
       window.speechSynthesis?.cancel();
@@ -355,7 +384,7 @@ const App = () => {
 
   const changeVoice = (voiceURI: string) => {
     setSelectedVoiceURI(voiceURI);
-    localStorage.setItem(voiceStorageKey, voiceURI);
+    safeSetStorage(voiceStorageKey, voiceURI);
 
     const nextVoice = voices.find((voice) => voice.voiceURI === voiceURI);
     if (nextVoice && soundOn) {
@@ -371,12 +400,12 @@ const App = () => {
 
   const changeDifficulty = (nextDifficulty: Difficulty) => {
     setDifficulty(nextDifficulty);
-    localStorage.setItem(difficultyStorageKey, nextDifficulty);
+    safeSetStorage(difficultyStorageKey, nextDifficulty);
   };
 
   const changeMode = (nextMode: GameMode) => {
     setMode(nextMode);
-    localStorage.setItem(modeStorageKey, nextMode);
+    safeSetStorage(modeStorageKey, nextMode);
   };
 
   const startLevel = (level: Level) => {
