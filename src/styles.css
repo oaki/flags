@@ -902,8 +902,7 @@ h1 {
 .flag-answer-content {
   align-items: center;
   display: grid;
-  gap: 10px;
-  grid-template-columns: auto 1fr;
+  justify-items: center;
   text-transform: uppercase;
 }
 
@@ -913,8 +912,8 @@ h1 {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   object-fit: contain;
-  padding: 4px;
-  width: 98px;
+  padding: 5px;
+  width: min(100%, 180px);
 }
 
 .find-map {

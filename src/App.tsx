@@ -1011,8 +1011,7 @@ const App = () => {
                       </span>
                       {currentQuestion.mode === 'country' ? (
                         <span className="flag-answer-content">
-                          <img alt="" src={option.flagUrl} />
-                          <span>{option.name}</span>
+                          <img alt={`Možnosť ${getOptionLabel(currentQuestion.options.findIndex((item) => item.code === option.code))}`} src={option.flagUrl} />
                         </span>
                       ) : (
                         <span>{option.name}</span>
