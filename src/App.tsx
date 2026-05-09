@@ -116,6 +116,14 @@ type EuropeMapProps = {
   variant: 'overview' | 'quiz';
 };
 
+const getWorldMapPosition = (latlng: number[]) => {
+  const [lat = 0, lng = 0] = latlng;
+  return {
+    x: ((lng + 180) / 360) * 100,
+    y: ((90 - lat) / 180) * 100,
+  };
+};
+
 const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
   const availableSet = availableCodes ? new Set(availableCodes) : null;
 
@@ -155,6 +163,29 @@ const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet
           </button>
         );
       })}
+    </div>
+  );
+};
+
+const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) => {
+  const position = getWorldMapPosition(country.latlng);
+
+  return (
+    <div className="answer-world-map" aria-label={`Poloha krajiny ${country.name} na mape sveta`}>
+      <div className="world-map-grid" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+      <span className="world-continent americas" aria-hidden="true" />
+      <span className="world-continent europe-africa" aria-hidden="true" />
+      <span className="world-continent asia" aria-hidden="true" />
+      <span className="world-continent oceania" aria-hidden="true" />
+      <span className="world-location-pulse" style={{ left: `${position.x}%`, top: `${position.y}%` }} aria-hidden="true" />
+      <span className="world-location-pin" style={{ left: `${position.x}%`, top: `${position.y}%` }}>
+        {country.code}
+      </span>
     </div>
   );
 };
@@ -1055,6 +1086,7 @@ const App = () => {
                     <strong>{getFeedbackTitle(currentQuestion, correct, newDiscovery)}</strong>
                     <span>{getFeedbackDetail(currentQuestion, correct)}</span>
                   </div>
+                  {correct && <WorldLocationMap country={currentQuestion.answer} />}
                   <button className="next-button" type="button" onClick={nextQuestion}>
                     {questionIndex + 1 >= questions.length ? 'Vyhodnotiť' : 'Ďalšia vlajka'}
                   </button>

@@ -13,6 +13,7 @@ export type Country = {
   unMember: boolean;
   flagUrl: string;
   flagUrlLarge: string;
+  latlng: number[];
 };
 
 export const countries = countryData as Country[];
