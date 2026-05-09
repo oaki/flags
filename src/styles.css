@@ -1088,45 +1088,11 @@ h1 {
 
 .answer-world-map .world-country-highlight,
 .answer-world-map .world-country-highlight * {
-  fill: #ef4444 !important;
-  stroke: #991b1b !important;
-  stroke-width: 2.2px !important;
-}
-
-.world-location-pulse,
-.world-location-pin {
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
-
-.world-location-pulse {
-  animation: mapPulse 1.7s ease-out infinite;
-  background: rgba(239, 68, 68, 0.18);
-  border: 2px solid rgba(239, 68, 68, 0.4);
-  border-radius: 999px;
-  height: 34px;
-  width: 34px;
-}
-
-.world-location-pin {
-  background: #ef4444;
-  border: 3px solid #ffffff;
-  border-radius: 999px;
-  box-shadow: 0 12px 24px rgba(153, 27, 27, 0.28);
-  height: 18px;
-  width: 18px;
-}
-
-@keyframes mapPulse {
-  0% {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(0.55);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.35);
-  }
+  fill: #f97316 !important;
+  filter: drop-shadow(0 0 6px rgba(153, 27, 27, 0.42));
+  stroke: #7f1d1d !important;
+  stroke-linejoin: round !important;
+  stroke-width: 3.4px !important;
 }
 
 .album-layout {

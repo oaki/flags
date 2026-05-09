@@ -31,11 +31,6 @@ import { AnswerRecord, useProgress } from './hooks/useProgress';
 
 type Screen = 'levels' | 'quiz' | 'result' | 'album' | 'parent';
 
-type MapMarkerPosition = {
-  x: number;
-  y: number;
-};
-
 const regionNames: Record<string, string> = {
   Africa: 'Afrika',
   Americas: 'Amerika',
@@ -136,14 +131,6 @@ const sanitizeWorldMapSvg = (svg: string) =>
     .replace(/<!DOCTYPE[^>]*>/i, '')
     .replace(/<script[\s\S]*?<\/script>/gi, '');
 
-const getFallbackWorldMapPosition = (latlng: number[]): MapMarkerPosition => {
-  const [lat = 0, lng = 0] = latlng;
-  return {
-    x: ((lng + 180) / 360) * 100,
-    y: ((90 - lat) / 180) * 100,
-  };
-};
-
 const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
   const availableSet = availableCodes ? new Set(availableCodes) : null;
 
@@ -191,7 +178,6 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
   const mapRef = useRef<HTMLDivElement>(null);
   const mapAsset = getWorldMapAsset(country.code);
   const [mapSvg, setMapSvg] = useState(worldMapSvgCache[mapAsset] || '');
-  const [position, setPosition] = useState<MapMarkerPosition>(() => getFallbackWorldMapPosition(country.latlng));
 
   useEffect(() => {
     let cancelled = false;
@@ -211,57 +197,32 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
         setMapSvg(worldMapSvgCache[mapAsset]);
       })
       .catch(() => {
-        setPosition(getFallbackWorldMapPosition(country.latlng));
+        setMapSvg('');
       });
 
     return () => {
       cancelled = true;
     };
-  }, [country.latlng, mapAsset]);
+  }, [mapAsset]);
 
   useEffect(() => {
     const mapElement = mapRef.current;
-    if (!mapElement || !mapSvg) {
-      setPosition(getFallbackWorldMapPosition(country.latlng));
-      return;
-    }
+    if (!mapElement || !mapSvg) return;
 
-    const svg = mapElement.querySelector('svg');
     const target = mapElement.querySelector<SVGGraphicsElement>(`#${getWorldMapId(country.code)}`);
 
     mapElement.querySelectorAll('.world-country-highlight').forEach((element) => {
       element.classList.remove('world-country-highlight');
     });
 
-    if (!svg || !target) {
-      setPosition(getFallbackWorldMapPosition(country.latlng));
-      return;
-    }
+    if (!target) return;
 
     target.classList.add('world-country-highlight');
-
-    try {
-      const box = target.getBBox();
-      const viewBox = svg.viewBox.baseVal;
-      const viewBoxWidth = viewBox?.width || 2752.766;
-      const viewBoxHeight = viewBox?.height || 1537.631;
-      const viewBoxX = viewBox?.x || 0;
-      const viewBoxY = viewBox?.y || 0;
-
-      setPosition({
-        x: ((box.x + box.width / 2 - viewBoxX) / viewBoxWidth) * 100,
-        y: ((box.y + box.height / 2 - viewBoxY) / viewBoxHeight) * 100,
-      });
-    } catch {
-      setPosition(getFallbackWorldMapPosition(country.latlng));
-    }
-  }, [country.code, country.latlng, mapSvg]);
+  }, [country.code, mapSvg]);
 
   return (
     <div className="answer-world-map" aria-label={`Poloha krajiny ${country.name} na mape sveta`}>
       <div className="answer-world-map-svg" ref={mapRef} dangerouslySetInnerHTML={{ __html: mapSvg }} />
-      <span className="world-location-pulse" style={{ left: `${position.x}%`, top: `${position.y}%` }} aria-hidden="true" />
-      <span className="world-location-pin" style={{ left: `${position.x}%`, top: `${position.y}%` }} aria-hidden="true" />
     </div>
   );
 };
