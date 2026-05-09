@@ -38,7 +38,7 @@ const byRegion = (region: Country['region']) =>
 const beginnerCodes = new Set([...easyCountryCodes, ...byRegion('Europe'), ...knownWorldCodes]);
 
 const expertCodes = countries
-  .filter((country) => !beginnerCodes.has(country.code))
+  .filter((country) => country.independent && !beginnerCodes.has(country.code))
   .map((country) => country.code);
 
 export const levels: Level[] = [
