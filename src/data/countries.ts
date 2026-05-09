@@ -6,6 +6,7 @@ export type Country = {
   code: string;
   name: string;
   officialName: string;
+  capital: string;
   region: Region;
   subregion: string;
   independent: boolean;

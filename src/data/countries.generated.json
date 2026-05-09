@@ -8,7 +8,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/af.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/af.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/af.png",
+    "capital": "Kabul"
   },
   {
     "code": "AX",
@@ -19,7 +20,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/ax.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ax.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ax.png",
+    "capital": "Mariehamn"
   },
   {
     "code": "AL",
@@ -30,7 +32,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/al.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/al.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/al.png",
+    "capital": "Tirana"
   },
   {
     "code": "DZ",
@@ -41,7 +44,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/dz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/dz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/dz.png",
+    "capital": "Algiers"
   },
   {
     "code": "AS",
@@ -52,7 +56,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/as.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/as.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/as.png",
+    "capital": "Pago Pago"
   },
   {
     "code": "VI",
@@ -63,7 +68,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/vi.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/vi.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/vi.png",
+    "capital": "Charlotte Amalie"
   },
   {
     "code": "AD",
@@ -74,7 +80,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ad.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ad.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ad.png",
+    "capital": "Andorra la Vella"
   },
   {
     "code": "AO",
@@ -85,7 +92,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ao.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ao.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ao.png",
+    "capital": "Luanda"
   },
   {
     "code": "AI",
@@ -96,7 +104,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/ai.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ai.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ai.png",
+    "capital": "The Valley"
   },
   {
     "code": "AQ",
@@ -107,7 +116,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/aq.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/aq.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/aq.png",
+    "capital": ""
   },
   {
     "code": "AG",
@@ -118,7 +128,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ag.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ag.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ag.png",
+    "capital": "Saint John's"
   },
   {
     "code": "AR",
@@ -129,7 +140,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ar.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ar.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ar.png",
+    "capital": "Buenos Aires"
   },
   {
     "code": "AM",
@@ -140,7 +152,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/am.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/am.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/am.png",
+    "capital": "Yerevan"
   },
   {
     "code": "AW",
@@ -151,7 +164,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/aw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/aw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/aw.png",
+    "capital": "Oranjestad"
   },
   {
     "code": "AU",
@@ -162,7 +176,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/au.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/au.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/au.png",
+    "capital": "Canberra"
   },
   {
     "code": "AZ",
@@ -173,7 +188,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/az.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/az.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/az.png",
+    "capital": "Baku"
   },
   {
     "code": "BS",
@@ -184,7 +200,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bs.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bs.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bs.png",
+    "capital": "Nassau"
   },
   {
     "code": "BH",
@@ -195,7 +212,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bh.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bh.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bh.png",
+    "capital": "Manama"
   },
   {
     "code": "BD",
@@ -206,7 +224,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bd.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bd.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bd.png",
+    "capital": "Dhaka"
   },
   {
     "code": "BB",
@@ -217,7 +236,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bb.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bb.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bb.png",
+    "capital": "Bridgetown"
   },
   {
     "code": "BE",
@@ -228,7 +248,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/be.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/be.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/be.png",
+    "capital": "Brussels"
   },
   {
     "code": "BZ",
@@ -239,7 +260,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bz.png",
+    "capital": "Belmopan"
   },
   {
     "code": "BJ",
@@ -250,7 +272,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bj.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bj.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bj.png",
+    "capital": "Porto-Novo"
   },
   {
     "code": "BM",
@@ -261,7 +284,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/bm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bm.png",
+    "capital": "Hamilton"
   },
   {
     "code": "BT",
@@ -272,7 +296,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bt.png",
+    "capital": "Thimphu"
   },
   {
     "code": "BY",
@@ -283,7 +308,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/by.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/by.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/by.png",
+    "capital": "Minsk"
   },
   {
     "code": "BO",
@@ -294,7 +320,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bo.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bo.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bo.png",
+    "capital": "Sucre"
   },
   {
     "code": "BQ",
@@ -305,7 +332,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/bq.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bq.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bq.png",
+    "capital": "Kralendijk"
   },
   {
     "code": "BA",
@@ -316,7 +344,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ba.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ba.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ba.png",
+    "capital": "Sarajevo"
   },
   {
     "code": "BW",
@@ -327,7 +356,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bw.png",
+    "capital": "Gaborone"
   },
   {
     "code": "BV",
@@ -338,7 +368,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/bv.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bv.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bv.png",
+    "capital": ""
   },
   {
     "code": "BR",
@@ -349,7 +380,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/br.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/br.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/br.png",
+    "capital": "Brasília"
   },
   {
     "code": "IO",
@@ -360,7 +392,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/io.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/io.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/io.png",
+    "capital": "Diego Garcia"
   },
   {
     "code": "BN",
@@ -371,7 +404,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bn.png",
+    "capital": "Bandar Seri Begawan"
   },
   {
     "code": "BG",
@@ -382,7 +416,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bg.png",
+    "capital": "Sofia"
   },
   {
     "code": "BF",
@@ -393,7 +428,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bf.png",
+    "capital": "Ouagadougou"
   },
   {
     "code": "BI",
@@ -404,7 +440,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/bi.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bi.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bi.png",
+    "capital": "Gitega"
   },
   {
     "code": "CK",
@@ -415,7 +452,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/ck.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ck.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ck.png",
+    "capital": "Avarua"
   },
   {
     "code": "CW",
@@ -426,7 +464,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/cw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cw.png",
+    "capital": "Willemstad"
   },
   {
     "code": "CY",
@@ -437,7 +476,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cy.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cy.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cy.png",
+    "capital": "Nicosia"
   },
   {
     "code": "TD",
@@ -448,7 +488,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/td.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/td.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/td.png",
+    "capital": "N'Djamena"
   },
   {
     "code": "CZ",
@@ -459,7 +500,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cz.png",
+    "capital": "Prague"
   },
   {
     "code": "ME",
@@ -470,7 +512,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/me.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/me.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/me.png",
+    "capital": "Podgorica"
   },
   {
     "code": "CL",
@@ -481,7 +524,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cl.png",
+    "capital": "Santiago"
   },
   {
     "code": "CN",
@@ -492,7 +536,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cn.png",
+    "capital": "Beijing"
   },
   {
     "code": "DK",
@@ -503,7 +548,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/dk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/dk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/dk.png",
+    "capital": "Copenhagen"
   },
   {
     "code": "DM",
@@ -514,7 +560,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/dm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/dm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/dm.png",
+    "capital": "Roseau"
   },
   {
     "code": "DO",
@@ -525,7 +572,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/do.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/do.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/do.png",
+    "capital": "Santo Domingo"
   },
   {
     "code": "DJ",
@@ -536,7 +584,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/dj.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/dj.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/dj.png",
+    "capital": "Djibouti"
   },
   {
     "code": "EG",
@@ -547,7 +596,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/eg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/eg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/eg.png",
+    "capital": "Cairo"
   },
   {
     "code": "EC",
@@ -558,7 +608,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ec.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ec.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ec.png",
+    "capital": "Quito"
   },
   {
     "code": "ER",
@@ -569,7 +620,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/er.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/er.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/er.png",
+    "capital": "Asmara"
   },
   {
     "code": "EE",
@@ -580,7 +632,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ee.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ee.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ee.png",
+    "capital": "Tallinn"
   },
   {
     "code": "ET",
@@ -591,7 +644,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/et.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/et.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/et.png",
+    "capital": "Addis Ababa"
   },
   {
     "code": "FO",
@@ -602,7 +656,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/fo.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/fo.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/fo.png",
+    "capital": "Tórshavn"
   },
   {
     "code": "FK",
@@ -613,7 +668,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/fk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/fk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/fk.png",
+    "capital": "Stanley"
   },
   {
     "code": "FJ",
@@ -624,7 +680,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/fj.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/fj.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/fj.png",
+    "capital": "Suva"
   },
   {
     "code": "PH",
@@ -635,7 +692,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ph.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ph.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ph.png",
+    "capital": "Manila"
   },
   {
     "code": "FI",
@@ -646,7 +704,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/fi.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/fi.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/fi.png",
+    "capital": "Helsinki"
   },
   {
     "code": "PF",
@@ -657,7 +716,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/pf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pf.png",
+    "capital": "Papeetē"
   },
   {
     "code": "TF",
@@ -668,7 +728,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/tf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tf.png",
+    "capital": "Port-aux-Français"
   },
   {
     "code": "FR",
@@ -679,7 +740,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/fr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/fr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/fr.png",
+    "capital": "Paris"
   },
   {
     "code": "GA",
@@ -690,7 +752,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ga.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ga.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ga.png",
+    "capital": "Libreville"
   },
   {
     "code": "GM",
@@ -701,7 +764,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gm.png",
+    "capital": "Banjul"
   },
   {
     "code": "GH",
@@ -712,7 +776,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gh.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gh.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gh.png",
+    "capital": "Accra"
   },
   {
     "code": "GI",
@@ -723,7 +788,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gi.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gi.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gi.png",
+    "capital": "Gibraltar"
   },
   {
     "code": "GR",
@@ -734,7 +800,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gr.png",
+    "capital": "Athens"
   },
   {
     "code": "GD",
@@ -745,7 +812,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gd.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gd.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gd.png",
+    "capital": "St. George's"
   },
   {
     "code": "GL",
@@ -756,7 +824,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gl.png",
+    "capital": "Nuuk"
   },
   {
     "code": "GE",
@@ -767,7 +836,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ge.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ge.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ge.png",
+    "capital": "Tbilisi"
   },
   {
     "code": "GP",
@@ -778,7 +848,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gp.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gp.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gp.png",
+    "capital": "Basse-Terre"
   },
   {
     "code": "GU",
@@ -789,7 +860,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gu.png",
+    "capital": "Hagåtña"
   },
   {
     "code": "GT",
@@ -800,7 +872,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gt.png",
+    "capital": "Guatemala City"
   },
   {
     "code": "GG",
@@ -811,7 +884,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gg.png",
+    "capital": "St. Peter Port"
   },
   {
     "code": "GN",
@@ -822,7 +896,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gn.png",
+    "capital": "Conakry"
   },
   {
     "code": "GW",
@@ -833,7 +908,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gw.png",
+    "capital": "Bissau"
   },
   {
     "code": "GF",
@@ -844,7 +920,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gf.png",
+    "capital": "Cayenne"
   },
   {
     "code": "GY",
@@ -855,7 +932,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gy.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gy.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gy.png",
+    "capital": "Georgetown"
   },
   {
     "code": "HT",
@@ -866,7 +944,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ht.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ht.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ht.png",
+    "capital": "Port-au-Prince"
   },
   {
     "code": "HM",
@@ -877,7 +956,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/hm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/hm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/hm.png",
+    "capital": ""
   },
   {
     "code": "NL",
@@ -888,7 +968,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/nl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/nl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/nl.png",
+    "capital": "Amsterdam"
   },
   {
     "code": "HN",
@@ -899,7 +980,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/hn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/hn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/hn.png",
+    "capital": "Tegucigalpa"
   },
   {
     "code": "HK",
@@ -910,7 +992,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/hk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/hk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/hk.png",
+    "capital": "City of Victoria"
   },
   {
     "code": "HR",
@@ -921,7 +1004,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/hr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/hr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/hr.png",
+    "capital": "Zagreb"
   },
   {
     "code": "IN",
@@ -932,7 +1016,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/in.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/in.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/in.png",
+    "capital": "New Delhi"
   },
   {
     "code": "ID",
@@ -943,7 +1028,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/id.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/id.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/id.png",
+    "capital": "Jakarta"
   },
   {
     "code": "IQ",
@@ -954,7 +1040,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/iq.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/iq.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/iq.png",
+    "capital": "Baghdad"
   },
   {
     "code": "IR",
@@ -965,7 +1052,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ir.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ir.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ir.png",
+    "capital": "Tehran"
   },
   {
     "code": "IE",
@@ -976,7 +1064,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ie.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ie.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ie.png",
+    "capital": "Dublin"
   },
   {
     "code": "IS",
@@ -987,7 +1076,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/is.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/is.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/is.png",
+    "capital": "Reykjavik"
   },
   {
     "code": "IL",
@@ -998,7 +1088,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/il.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/il.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/il.png",
+    "capital": "Jerusalem"
   },
   {
     "code": "JM",
@@ -1009,7 +1100,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/jm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/jm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/jm.png",
+    "capital": "Kingston"
   },
   {
     "code": "JP",
@@ -1020,7 +1112,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/jp.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/jp.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/jp.png",
+    "capital": "Tokyo"
   },
   {
     "code": "YE",
@@ -1031,7 +1124,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ye.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ye.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ye.png",
+    "capital": "Sana'a"
   },
   {
     "code": "JE",
@@ -1042,7 +1136,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/je.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/je.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/je.png",
+    "capital": "Saint Helier"
   },
   {
     "code": "JO",
@@ -1053,7 +1148,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/jo.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/jo.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/jo.png",
+    "capital": "Amman"
   },
   {
     "code": "ZA",
@@ -1064,7 +1160,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/za.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/za.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/za.png",
+    "capital": "Pretoria, Bloemfontein, Cape Town"
   },
   {
     "code": "GS",
@@ -1075,7 +1172,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/gs.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gs.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gs.png",
+    "capital": "King Edward Point"
   },
   {
     "code": "KR",
@@ -1086,7 +1184,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kr.png",
+    "capital": "Seoul"
   },
   {
     "code": "SS",
@@ -1097,7 +1196,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ss.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ss.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ss.png",
+    "capital": "Juba"
   },
   {
     "code": "KY",
@@ -1108,7 +1208,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/ky.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ky.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ky.png",
+    "capital": "George Town"
   },
   {
     "code": "KH",
@@ -1119,7 +1220,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kh.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kh.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kh.png",
+    "capital": "Phnom Penh"
   },
   {
     "code": "CM",
@@ -1130,7 +1232,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cm.png",
+    "capital": "Yaoundé"
   },
   {
     "code": "CA",
@@ -1141,7 +1244,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ca.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ca.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ca.png",
+    "capital": "Ottawa"
   },
   {
     "code": "CV",
@@ -1152,7 +1256,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cv.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cv.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cv.png",
+    "capital": "Praia"
   },
   {
     "code": "QA",
@@ -1163,7 +1268,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/qa.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/qa.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/qa.png",
+    "capital": "Doha"
   },
   {
     "code": "KZ",
@@ -1174,7 +1280,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kz.png",
+    "capital": "Astana"
   },
   {
     "code": "KE",
@@ -1185,7 +1292,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ke.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ke.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ke.png",
+    "capital": "Nairobi"
   },
   {
     "code": "KG",
@@ -1196,7 +1304,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kg.png",
+    "capital": "Bishkek"
   },
   {
     "code": "KI",
@@ -1207,7 +1316,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ki.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ki.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ki.png",
+    "capital": "South Tarawa"
   },
   {
     "code": "CC",
@@ -1218,7 +1328,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/cc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cc.png",
+    "capital": "West Island"
   },
   {
     "code": "CO",
@@ -1229,7 +1340,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/co.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/co.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/co.png",
+    "capital": "Bogotá"
   },
   {
     "code": "KM",
@@ -1240,7 +1352,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/km.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/km.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/km.png",
+    "capital": "Moroni"
   },
   {
     "code": "CD",
@@ -1251,7 +1364,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cd.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cd.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cd.png",
+    "capital": "Kinshasa"
   },
   {
     "code": "CG",
@@ -1262,7 +1376,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cg.png",
+    "capital": "Brazzaville"
   },
   {
     "code": "KP",
@@ -1273,7 +1388,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kp.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kp.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kp.png",
+    "capital": "Pyongyang"
   },
   {
     "code": "XK",
@@ -1284,7 +1400,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/xk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/xk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/xk.png",
+    "capital": "Pristina"
   },
   {
     "code": "CR",
@@ -1295,7 +1412,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cr.png",
+    "capital": "San José"
   },
   {
     "code": "CU",
@@ -1306,7 +1424,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cu.png",
+    "capital": "Havana"
   },
   {
     "code": "KW",
@@ -1317,7 +1436,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kw.png",
+    "capital": "Kuwait City"
   },
   {
     "code": "LA",
@@ -1328,7 +1448,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/la.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/la.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/la.png",
+    "capital": "Vientiane"
   },
   {
     "code": "LS",
@@ -1339,7 +1460,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ls.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ls.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ls.png",
+    "capital": "Maseru"
   },
   {
     "code": "LB",
@@ -1350,7 +1472,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lb.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lb.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lb.png",
+    "capital": "Beirut"
   },
   {
     "code": "LR",
@@ -1361,7 +1484,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lr.png",
+    "capital": "Monrovia"
   },
   {
     "code": "LY",
@@ -1372,7 +1496,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ly.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ly.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ly.png",
+    "capital": "Tripoli"
   },
   {
     "code": "LI",
@@ -1383,7 +1508,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/li.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/li.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/li.png",
+    "capital": "Vaduz"
   },
   {
     "code": "LT",
@@ -1394,7 +1520,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lt.png",
+    "capital": "Vilnius"
   },
   {
     "code": "LV",
@@ -1405,7 +1532,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lv.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lv.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lv.png",
+    "capital": "Riga"
   },
   {
     "code": "LU",
@@ -1416,7 +1544,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lu.png",
+    "capital": "Luxembourg"
   },
   {
     "code": "MO",
@@ -1427,7 +1556,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/mo.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mo.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mo.png",
+    "capital": ""
   },
   {
     "code": "MG",
@@ -1438,7 +1568,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mg.png",
+    "capital": "Antananarivo"
   },
   {
     "code": "HU",
@@ -1449,7 +1580,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/hu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/hu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/hu.png",
+    "capital": "Budapest"
   },
   {
     "code": "MY",
@@ -1460,7 +1592,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/my.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/my.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/my.png",
+    "capital": "Kuala Lumpur"
   },
   {
     "code": "MW",
@@ -1471,7 +1604,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mw.png",
+    "capital": "Lilongwe"
   },
   {
     "code": "MV",
@@ -1482,7 +1616,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mv.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mv.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mv.png",
+    "capital": "Malé"
   },
   {
     "code": "ML",
@@ -1493,7 +1628,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ml.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ml.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ml.png",
+    "capital": "Bamako"
   },
   {
     "code": "MT",
@@ -1504,7 +1640,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mt.png",
+    "capital": "Valletta"
   },
   {
     "code": "IM",
@@ -1515,7 +1652,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/im.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/im.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/im.png",
+    "capital": "Douglas"
   },
   {
     "code": "MA",
@@ -1526,7 +1664,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ma.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ma.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ma.png",
+    "capital": "Rabat"
   },
   {
     "code": "MH",
@@ -1537,7 +1676,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mh.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mh.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mh.png",
+    "capital": "Majuro"
   },
   {
     "code": "MQ",
@@ -1548,7 +1688,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/mq.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mq.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mq.png",
+    "capital": "Fort-de-France"
   },
   {
     "code": "MU",
@@ -1559,7 +1700,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mu.png",
+    "capital": "Port Louis"
   },
   {
     "code": "MR",
@@ -1570,7 +1712,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mr.png",
+    "capital": "Nouakchott"
   },
   {
     "code": "YT",
@@ -1581,7 +1724,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/yt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/yt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/yt.png",
+    "capital": "Mamoudzou"
   },
   {
     "code": "UM",
@@ -1592,7 +1736,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/um.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/um.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/um.png",
+    "capital": "Washington DC"
   },
   {
     "code": "MX",
@@ -1603,7 +1748,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mx.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mx.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mx.png",
+    "capital": "Mexico City"
   },
   {
     "code": "FM",
@@ -1614,7 +1760,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/fm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/fm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/fm.png",
+    "capital": "Palikir"
   },
   {
     "code": "MM",
@@ -1625,7 +1772,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mm.png",
+    "capital": "Naypyidaw"
   },
   {
     "code": "MD",
@@ -1636,7 +1784,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/md.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/md.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/md.png",
+    "capital": "Chișinău"
   },
   {
     "code": "MC",
@@ -1647,7 +1796,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mc.png",
+    "capital": "Monaco"
   },
   {
     "code": "MN",
@@ -1658,7 +1808,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mn.png",
+    "capital": "Ulan Bator"
   },
   {
     "code": "MS",
@@ -1669,7 +1820,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/ms.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ms.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ms.png",
+    "capital": "Plymouth"
   },
   {
     "code": "MZ",
@@ -1680,7 +1832,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mz.png",
+    "capital": "Maputo"
   },
   {
     "code": "NA",
@@ -1691,7 +1844,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/na.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/na.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/na.png",
+    "capital": "Windhoek"
   },
   {
     "code": "NR",
@@ -1702,7 +1856,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/nr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/nr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/nr.png",
+    "capital": "Yaren"
   },
   {
     "code": "DE",
@@ -1713,7 +1868,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/de.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/de.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/de.png",
+    "capital": "Berlin"
   },
   {
     "code": "NP",
@@ -1724,7 +1880,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/np.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/np.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/np.png",
+    "capital": "Kathmandu"
   },
   {
     "code": "NE",
@@ -1735,7 +1892,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ne.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ne.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ne.png",
+    "capital": "Niamey"
   },
   {
     "code": "NG",
@@ -1746,7 +1904,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ng.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ng.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ng.png",
+    "capital": "Abuja"
   },
   {
     "code": "NI",
@@ -1757,7 +1916,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ni.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ni.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ni.png",
+    "capital": "Managua"
   },
   {
     "code": "NU",
@@ -1768,7 +1928,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/nu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/nu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/nu.png",
+    "capital": "Alofi"
   },
   {
     "code": "NF",
@@ -1779,7 +1940,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/nf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/nf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/nf.png",
+    "capital": "Kingston"
   },
   {
     "code": "NO",
@@ -1790,7 +1952,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/no.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/no.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/no.png",
+    "capital": "Oslo"
   },
   {
     "code": "NC",
@@ -1801,7 +1964,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/nc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/nc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/nc.png",
+    "capital": "Nouméa"
   },
   {
     "code": "NZ",
@@ -1812,7 +1976,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/nz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/nz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/nz.png",
+    "capital": "Wellington"
   },
   {
     "code": "OM",
@@ -1823,7 +1988,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/om.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/om.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/om.png",
+    "capital": "Muscat"
   },
   {
     "code": "PK",
@@ -1834,7 +2000,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pk.png",
+    "capital": "Islamabad"
   },
   {
     "code": "PW",
@@ -1845,7 +2012,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pw.png",
+    "capital": "Ngerulmud"
   },
   {
     "code": "PS",
@@ -1856,7 +2024,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/ps.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ps.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ps.png",
+    "capital": "Ramallah, Jerusalem"
   },
   {
     "code": "PA",
@@ -1867,7 +2036,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pa.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pa.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pa.png",
+    "capital": "Panama City"
   },
   {
     "code": "VG",
@@ -1878,7 +2048,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/vg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/vg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/vg.png",
+    "capital": "Road Town"
   },
   {
     "code": "PG",
@@ -1889,7 +2060,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pg.png",
+    "capital": "Port Moresby"
   },
   {
     "code": "PY",
@@ -1900,7 +2072,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/py.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/py.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/py.png",
+    "capital": "Asunción"
   },
   {
     "code": "PE",
@@ -1911,7 +2084,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pe.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pe.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pe.png",
+    "capital": "Lima"
   },
   {
     "code": "PN",
@@ -1922,7 +2096,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/pn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pn.png",
+    "capital": "Adamstown"
   },
   {
     "code": "CI",
@@ -1933,7 +2108,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ci.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ci.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ci.png",
+    "capital": "Yamoussoukro"
   },
   {
     "code": "PL",
@@ -1944,7 +2120,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pl.png",
+    "capital": "Warsaw"
   },
   {
     "code": "PR",
@@ -1955,7 +2132,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/pr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pr.png",
+    "capital": "San Juan"
   },
   {
     "code": "PT",
@@ -1966,7 +2144,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/pt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pt.png",
+    "capital": "Lisbon"
   },
   {
     "code": "AT",
@@ -1977,7 +2156,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/at.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/at.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/at.png",
+    "capital": "Vienna"
   },
   {
     "code": "RE",
@@ -1988,7 +2168,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/re.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/re.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/re.png",
+    "capital": "Saint-Denis"
   },
   {
     "code": "GQ",
@@ -1999,7 +2180,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gq.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gq.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gq.png",
+    "capital": "Ciudad de la Paz"
   },
   {
     "code": "RO",
@@ -2010,7 +2192,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ro.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ro.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ro.png",
+    "capital": "Bucharest"
   },
   {
     "code": "RU",
@@ -2021,7 +2204,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ru.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ru.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ru.png",
+    "capital": "Moscow"
   },
   {
     "code": "RW",
@@ -2032,7 +2216,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/rw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/rw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/rw.png",
+    "capital": "Kigali"
   },
   {
     "code": "PM",
@@ -2043,7 +2228,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/pm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/pm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/pm.png",
+    "capital": "Saint-Pierre"
   },
   {
     "code": "MF",
@@ -2054,7 +2240,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/mf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mf.png",
+    "capital": "Marigot"
   },
   {
     "code": "SB",
@@ -2065,7 +2252,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sb.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sb.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sb.png",
+    "capital": "Honiara"
   },
   {
     "code": "SV",
@@ -2076,7 +2264,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sv.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sv.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sv.png",
+    "capital": "San Salvador"
   },
   {
     "code": "WS",
@@ -2087,7 +2276,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ws.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ws.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ws.png",
+    "capital": "Apia"
   },
   {
     "code": "SM",
@@ -2098,7 +2288,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sm.png",
+    "capital": "City of San Marino"
   },
   {
     "code": "SA",
@@ -2109,7 +2300,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sa.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sa.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sa.png",
+    "capital": "Riyadh"
   },
   {
     "code": "SN",
@@ -2120,7 +2312,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sn.png",
+    "capital": "Dakar"
   },
   {
     "code": "MK",
@@ -2131,7 +2324,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/mk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mk.png",
+    "capital": "Skopje"
   },
   {
     "code": "MP",
@@ -2142,7 +2336,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/mp.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/mp.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/mp.png",
+    "capital": "Saipan"
   },
   {
     "code": "SC",
@@ -2153,7 +2348,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sc.png",
+    "capital": "Victoria"
   },
   {
     "code": "SL",
@@ -2164,7 +2360,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sl.png",
+    "capital": "Freetown"
   },
   {
     "code": "SG",
@@ -2175,7 +2372,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sg.png",
+    "capital": "Singapore"
   },
   {
     "code": "SX",
@@ -2186,7 +2384,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/sx.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sx.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sx.png",
+    "capital": "Philipsburg"
   },
   {
     "code": "SK",
@@ -2197,7 +2396,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sk.png",
+    "capital": "Bratislava"
   },
   {
     "code": "SI",
@@ -2208,7 +2408,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/si.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/si.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/si.png",
+    "capital": "Ljubljana"
   },
   {
     "code": "SO",
@@ -2219,7 +2420,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/so.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/so.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/so.png",
+    "capital": "Mogadishu"
   },
   {
     "code": "AE",
@@ -2230,7 +2432,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ae.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ae.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ae.png",
+    "capital": "Abu Dhabi"
   },
   {
     "code": "US",
@@ -2241,7 +2444,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/us.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/us.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/us.png",
+    "capital": "Washington, D.C."
   },
   {
     "code": "RS",
@@ -2252,7 +2456,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/rs.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/rs.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/rs.png",
+    "capital": "Belgrade"
   },
   {
     "code": "LK",
@@ -2263,7 +2468,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lk.png",
+    "capital": "Sri Jayawardenepura Kotte"
   },
   {
     "code": "CF",
@@ -2274,7 +2480,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/cf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cf.png",
+    "capital": "Bangui"
   },
   {
     "code": "SD",
@@ -2285,7 +2492,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sd.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sd.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sd.png",
+    "capital": "Khartoum"
   },
   {
     "code": "SR",
@@ -2296,7 +2504,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sr.png",
+    "capital": "Paramaribo"
   },
   {
     "code": "SJ",
@@ -2307,7 +2516,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/sj.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sj.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sj.png",
+    "capital": "Longyearbyen"
   },
   {
     "code": "SZ",
@@ -2318,7 +2528,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sz.png",
+    "capital": "Mbabane"
   },
   {
     "code": "SH",
@@ -2329,7 +2540,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/sh.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sh.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sh.png",
+    "capital": "Jamestown"
   },
   {
     "code": "LC",
@@ -2340,7 +2552,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/lc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/lc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/lc.png",
+    "capital": "Castries"
   },
   {
     "code": "BL",
@@ -2351,7 +2564,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/bl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/bl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/bl.png",
+    "capital": "Gustavia"
   },
   {
     "code": "KN",
@@ -2362,7 +2576,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/kn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/kn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/kn.png",
+    "capital": "Basseterre"
   },
   {
     "code": "ST",
@@ -2373,7 +2588,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/st.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/st.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/st.png",
+    "capital": "São Tomé"
   },
   {
     "code": "VC",
@@ -2384,7 +2600,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/vc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/vc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/vc.png",
+    "capital": "Kingstown"
   },
   {
     "code": "SY",
@@ -2395,7 +2612,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/sy.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/sy.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/sy.png",
+    "capital": "Damascus"
   },
   {
     "code": "ES",
@@ -2406,7 +2624,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/es.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/es.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/es.png",
+    "capital": "Madrid"
   },
   {
     "code": "CH",
@@ -2417,7 +2636,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ch.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ch.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ch.png",
+    "capital": "Bern"
   },
   {
     "code": "SE",
@@ -2428,7 +2648,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/se.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/se.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/se.png",
+    "capital": "Stockholm"
   },
   {
     "code": "TJ",
@@ -2439,7 +2660,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tj.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tj.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tj.png",
+    "capital": "Dushanbe"
   },
   {
     "code": "TW",
@@ -2450,7 +2672,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/tw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tw.png",
+    "capital": "Taipei"
   },
   {
     "code": "IT",
@@ -2461,7 +2684,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/it.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/it.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/it.png",
+    "capital": "Rome"
   },
   {
     "code": "TZ",
@@ -2472,7 +2696,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tz.png",
+    "capital": "Dodoma"
   },
   {
     "code": "TH",
@@ -2483,7 +2708,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/th.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/th.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/th.png",
+    "capital": "Bangkok"
   },
   {
     "code": "TG",
@@ -2494,7 +2720,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tg.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tg.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tg.png",
+    "capital": "Lomé"
   },
   {
     "code": "TK",
@@ -2505,7 +2732,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/tk.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tk.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tk.png",
+    "capital": "Fakaofo"
   },
   {
     "code": "TO",
@@ -2516,7 +2744,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/to.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/to.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/to.png",
+    "capital": "Nuku'alofa"
   },
   {
     "code": "TT",
@@ -2527,7 +2756,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tt.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tt.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tt.png",
+    "capital": "Port of Spain"
   },
   {
     "code": "TN",
@@ -2538,7 +2768,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tn.png",
+    "capital": "Tunis"
   },
   {
     "code": "TR",
@@ -2549,7 +2780,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tr.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tr.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tr.png",
+    "capital": "Ankara"
   },
   {
     "code": "TM",
@@ -2560,7 +2792,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tm.png",
+    "capital": "Ashgabat"
   },
   {
     "code": "TC",
@@ -2571,7 +2804,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/tc.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tc.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tc.png",
+    "capital": "Cockburn Town"
   },
   {
     "code": "TV",
@@ -2582,7 +2816,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tv.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tv.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tv.png",
+    "capital": "Funafuti"
   },
   {
     "code": "UG",
@@ -2593,7 +2828,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ug.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ug.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ug.png",
+    "capital": "Kampala"
   },
   {
     "code": "UA",
@@ -2604,7 +2840,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ua.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ua.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ua.png",
+    "capital": "Kyiv"
   },
   {
     "code": "UY",
@@ -2615,7 +2852,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/uy.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/uy.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/uy.png",
+    "capital": "Montevideo"
   },
   {
     "code": "UZ",
@@ -2626,7 +2864,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/uz.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/uz.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/uz.png",
+    "capital": "Tashkent"
   },
   {
     "code": "VU",
@@ -2637,7 +2876,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/vu.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/vu.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/vu.png",
+    "capital": "Port Vila"
   },
   {
     "code": "VA",
@@ -2648,7 +2888,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/va.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/va.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/va.png",
+    "capital": "Vatican City"
   },
   {
     "code": "GB",
@@ -2659,7 +2900,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/gb.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/gb.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/gb.png",
+    "capital": "London"
   },
   {
     "code": "VE",
@@ -2670,7 +2912,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/ve.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/ve.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/ve.png",
+    "capital": "Caracas"
   },
   {
     "code": "CX",
@@ -2681,7 +2924,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/cx.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/cx.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/cx.png",
+    "capital": "Flying Fish Cove"
   },
   {
     "code": "VN",
@@ -2692,7 +2936,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/vn.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/vn.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/vn.png",
+    "capital": "Hanoi"
   },
   {
     "code": "TL",
@@ -2703,7 +2948,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/tl.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/tl.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/tl.png",
+    "capital": "Dili"
   },
   {
     "code": "WF",
@@ -2714,7 +2960,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/wf.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/wf.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/wf.png",
+    "capital": "Mata-Utu"
   },
   {
     "code": "ZM",
@@ -2725,7 +2972,8 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/zm.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/zm.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/zm.png",
+    "capital": "Lusaka"
   },
   {
     "code": "EH",
@@ -2736,7 +2984,8 @@
     "independent": false,
     "unMember": false,
     "flagUrl": "https://flagcdn.com/w320/eh.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/eh.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/eh.png",
+    "capital": "El Aaiún"
   },
   {
     "code": "ZW",
@@ -2747,6 +2996,7 @@
     "independent": true,
     "unMember": true,
     "flagUrl": "https://flagcdn.com/w320/zw.png",
-    "flagUrlLarge": "https://flagcdn.com/w640/zw.png"
+    "flagUrlLarge": "https://flagcdn.com/w640/zw.png",
+    "capital": "Harare"
   }
 ]

@@ -14,13 +14,60 @@ const regionLens = {
   Oceania: 'V Oceánii veľa vlajok patrí ostrovom, kde je dôležité more, hviezdy a dlhé vzdialenosti.',
 } satisfies Record<Region, string>;
 
+const capitalNames: Record<string, string> = {
+  AD: 'Andorra la Vella',
+  AT: 'Viedeň',
+  AU: 'Canberra',
+  BD: 'Dháka',
+  BE: 'Brusel',
+  BR: 'Brasília',
+  CA: 'Ottawa',
+  CI: 'Yamoussoukro',
+  CN: 'Peking',
+  CZ: 'Praha',
+  DE: 'Berlín',
+  DK: 'Kodaň',
+  ES: 'Madrid',
+  FI: 'Helsinki',
+  FJ: 'Suva',
+  FR: 'Paríž',
+  GB: 'Londýn',
+  HR: 'Záhreb',
+  HU: 'Budapešť',
+  ID: 'Jakarta',
+  IE: 'Dublin',
+  IS: 'Reykjavík',
+  IT: 'Rím',
+  JP: 'Tokio',
+  LB: 'Bejrút',
+  LU: 'Luxemburg',
+  LV: 'Riga',
+  MC: 'Monako',
+  MD: 'Kišiňov',
+  MX: 'Mexico City',
+  NL: 'Amsterdam',
+  NO: 'Oslo',
+  NZ: 'Wellington',
+  PL: 'Varšava',
+  RO: 'Bukurešť',
+  RS: 'Belehrad',
+  RU: 'Moskva',
+  SE: 'Štokholm',
+  SI: 'Ľubľana',
+  SK: 'Bratislava',
+  TD: 'N’Djamena',
+  UA: 'Kyjev',
+  US: 'Washington, D.C.',
+  ZA: 'Pretória, Bloemfontein a Kapské Mesto',
+};
+
 const factsByCode: Record<string, FactCopy> = {
   AD: {
     country: 'Andorra leží vysoko v Pyrenejach medzi Francúzskom a Španielskom.',
     flag: 'Na vlajke má zvislé pruhy a znak v strede, preto si ju nepleť s jednoduchými trojfarebnými vlajkami.',
   },
   AT: {
-    country: 'Rakúsko je náš sused a jeho hlavné mesto Viedeň leží blízko Slovenska.',
+    country: 'Rakúsko je náš sused s horami, jazerami a veľa historickými mestami.',
     flag: 'Rakúska vlajka má jednoduchý vzor červená, biela, červená. Biela je uprostred ako široký pás.',
   },
   AU: {
@@ -76,7 +123,7 @@ const factsByCode: Record<string, FactCopy> = {
     flag: 'Svetlomodré pole pripomína more a v rohu má britskú vlajku.',
   },
   FR: {
-    country: 'Francúzsko je známe Parížom, Eiffelovou vežou a dlhým pobrežím pri dvoch moriach.',
+    country: 'Francúzsko je známe Eiffelovou vežou, veľkými mestami a dlhým pobrežím pri dvoch moriach.',
     flag: 'Francúzska trikolóra má zvislé pruhy modrá, biela, červená.',
   },
   GB: {
@@ -88,7 +135,7 @@ const factsByCode: Record<string, FactCopy> = {
     flag: 'Šachovnicový znak v strede je najlepší detail na zapamätanie.',
   },
   HU: {
-    country: 'Maďarsko je náš južný sused a jeho hlavné mesto Budapešť leží na Dunaji.',
+    country: 'Maďarsko je náš južný sused a cez krajinu tečie Dunaj.',
     flag: 'Tri vodorovné pruhy idú červená, biela, zelená. Zelená je dole.',
   },
   ID: {
@@ -172,7 +219,7 @@ const factsByCode: Record<string, FactCopy> = {
     flag: 'Je podobná slovenskej, ale znak má hory a vlny.',
   },
   SK: {
-    country: 'Slovensko leží v srdci Európy a cez Bratislavu tečie Dunaj.',
+    country: 'Slovensko leží v srdci Európy a cez krajinu tečie Dunaj.',
     flag: 'Na vlajke sú biela, modrá a červená. Znak s dvojkrížom ju odlíši od Ruska či Slovinska.',
   },
   TD: {
@@ -198,14 +245,23 @@ const getFallbackFacts = (country: Country): FactCopy => ({
   flag: `Pri vlajke krajiny ${country.name} hľadaj jeden zapamätateľný detail: poradie farieb, smer pruhov, znak, hviezdu alebo kríž.`,
 });
 
+const getCapitalName = (country: Country) => capitalNames[country.code] || country.capital;
+
+export const getCapitalFact = (country: Country) => {
+  const capital = getCapitalName(country);
+  return capital
+    ? `Hlavné mesto: ${capital}.`
+    : 'Táto krajina alebo územie nemá v dátach uvedené bežné hlavné mesto.';
+};
+
 export const getCountryFact = (country: Country) => (factsByCode[country.code] || getFallbackFacts(country)).country;
 
 export const getFlagFact = (country: Country) => (factsByCode[country.code] || getFallbackFacts(country)).flag;
 
 export const getKidFact = (country: Country) => {
-  return `${getCountryFact(country)} ${getFlagFact(country)}`;
+  return `${getCapitalFact(country)} ${getCountryFact(country)} ${getFlagFact(country)}`;
 };
 
 export const getCountryStory = (country: Country) => {
-  return `${getCountryFact(country)} ${getFlagFact(country)}`;
+  return `${getCapitalFact(country)} ${getCountryFact(country)} ${getFlagFact(country)}`;
 };
