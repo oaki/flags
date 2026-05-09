@@ -173,9 +173,7 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
   return (
     <div className="answer-world-map" aria-label={`Poloha krajiny ${country.name} na mape sveta`}>
       <span className="world-location-pulse" style={{ left: `${position.x}%`, top: `${position.y}%` }} aria-hidden="true" />
-      <span className="world-location-pin" style={{ left: `${position.x}%`, top: `${position.y}%` }}>
-        {country.code}
-      </span>
+      <span className="world-location-pin" style={{ left: `${position.x}%`, top: `${position.y}%` }} aria-hidden="true" />
     </div>
   );
 };
