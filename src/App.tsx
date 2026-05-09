@@ -131,6 +131,34 @@ const sanitizeWorldMapSvg = (svg: string) =>
     .replace(/<!DOCTYPE[^>]*>/i, '')
     .replace(/<script[\s\S]*?<\/script>/gi, '');
 
+const getZoomedViewBox = (box: DOMRect, originalViewBox: DOMRect) => {
+  const mapAspectRatio = originalViewBox.width / originalViewBox.height;
+  const maxZoom = 5.4;
+  const padding = 5.8;
+  let width = Math.max(box.width * padding, originalViewBox.width / maxZoom);
+  let height = Math.max(box.height * padding, originalViewBox.height / maxZoom);
+
+  if (width / height > mapAspectRatio) {
+    height = width / mapAspectRatio;
+  } else {
+    width = height * mapAspectRatio;
+  }
+
+  width = Math.min(width, originalViewBox.width);
+  height = Math.min(height, originalViewBox.height);
+
+  const centerX = box.x + box.width / 2;
+  const centerY = box.y + box.height / 2;
+  const minX = originalViewBox.x;
+  const minY = originalViewBox.y;
+  const maxX = originalViewBox.x + originalViewBox.width - width;
+  const maxY = originalViewBox.y + originalViewBox.height - height;
+  const x = Math.min(Math.max(centerX - width / 2, minX), maxX);
+  const y = Math.min(Math.max(centerY - height / 2, minY), maxY);
+
+  return `${x} ${y} ${width} ${height}`;
+};
+
 const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
   const availableSet = availableCodes ? new Set(availableCodes) : null;
 
@@ -209,15 +237,27 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
     const mapElement = mapRef.current;
     if (!mapElement || !mapSvg) return;
 
+    const svg = mapElement.querySelector('svg');
     const target = mapElement.querySelector<SVGGraphicsElement>(`#${getWorldMapId(country.code)}`);
 
     mapElement.querySelectorAll('.world-country-highlight').forEach((element) => {
       element.classList.remove('world-country-highlight');
     });
 
-    if (!target) return;
+    if (!svg || !target) return;
 
     target.classList.add('world-country-highlight');
+
+    const originalViewBox =
+      svg.dataset.originalViewBox ||
+      svg.getAttribute('viewBox') ||
+      `0 0 ${svg.viewBox.baseVal.width || 2752.766} ${svg.viewBox.baseVal.height || 1537.631}`;
+    svg.dataset.originalViewBox = originalViewBox;
+
+    const [x, y, width, height] = originalViewBox.split(/\s+/).map(Number);
+    if ([x, y, width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
+
+    svg.setAttribute('viewBox', getZoomedViewBox(target.getBBox(), new DOMRect(x, y, width, height)));
   }, [country.code, mapSvg]);
 
   return (
