@@ -9,100 +9,70 @@ export type Level = {
   countryCodes: string[];
 };
 
-const starterCodes = [
+const easyCountryCodes = [
   'SK',
   'CZ',
-  'PL',
-  'HU',
-  'AT',
-  'DE',
+  'US',
   'FR',
   'IT',
+  'DE',
   'ES',
   'GB',
-  'IE',
-  'US',
-  'CA',
-  'BR',
-  'MX',
+  'PL',
+  'AT',
+];
+
+const knownWorldCodes = [
   'JP',
   'CN',
-  'IN',
+  'BR',
+  'CA',
   'AU',
-  'ZA',
+  'EG',
+  'IN',
 ];
 
 const byRegion = (region: Country['region']) =>
   countries.filter((country) => country.region === region && country.independent).map((country) => country.code);
 
-const territories = countries
-  .filter((country) => !country.independent || !country.unMember)
+const beginnerCodes = new Set([...easyCountryCodes, ...byRegion('Europe'), ...knownWorldCodes]);
+
+const expertCodes = countries
+  .filter((country) => !beginnerCodes.has(country.code))
   .map((country) => country.code);
 
 export const levels: Level[] = [
   {
     id: 1,
-    title: 'Prvé vlajky',
-    subtitle: 'Známe krajiny na ľahký štart',
+    title: 'Ľahké krajiny',
+    subtitle: 'Najznámejšie vlajky na istý štart',
     targetScore: 7,
     questionCount: 10,
-    countryCodes: starterCodes,
+    countryCodes: easyCountryCodes,
   },
   {
     id: 2,
     title: 'Európa',
-    subtitle: 'Krajiny blízko nás',
+    subtitle: 'Všetky európske krajiny',
     targetScore: 7,
     questionCount: 10,
     countryCodes: byRegion('Europe'),
   },
   {
     id: 3,
-    title: 'Amerika',
-    subtitle: 'Sever, stred aj juh Ameriky',
+    title: 'Známy svet',
+    subtitle: 'Veľké a často spomínané krajiny mimo Európy',
     targetScore: 7,
     questionCount: 10,
-    countryCodes: byRegion('Americas'),
+    countryCodes: knownWorldCodes,
   },
   {
     id: 4,
-    title: 'Ázia',
-    subtitle: 'Veľký svet plný farieb',
+    title: 'Expert',
+    subtitle: 'Menšie, vzdialenejšie a menej známe krajiny',
     targetScore: 7,
     questionCount: 10,
-    countryCodes: byRegion('Asia'),
-  },
-  {
-    id: 5,
-    title: 'Afrika',
-    subtitle: 'Slnko, savany a nové vlajky',
-    targetScore: 7,
-    questionCount: 10,
-    countryCodes: byRegion('Africa'),
-  },
-  {
-    id: 6,
-    title: 'Oceánia',
-    subtitle: 'Ostrovy, more a hviezdy',
-    targetScore: 7,
-    questionCount: 10,
-    countryCodes: byRegion('Oceania'),
-  },
-  {
-    id: 7,
-    title: 'Tajné miesta',
-    subtitle: 'Vlajky pre malých majstrov',
-    targetScore: 7,
-    questionCount: 10,
-    countryCodes: territories,
-  },
-  {
-    id: 8,
-    title: 'Celý svet',
-    subtitle: `${countries.length} vlajok v jednej výzve`,
-    targetScore: 8,
-    questionCount: 12,
-    countryCodes: countries.map((country) => country.code),
+    countryCodes: expertCodes,
   },
 ];
 

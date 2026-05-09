@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { maxLevelId } from '../data/levels';
 
 const STORAGE_KEY = 'flag-world-kids-progress-v1';
 
@@ -30,12 +31,18 @@ const defaultProgress: Progress = {
   dailyChallengeDates: [],
 };
 
+const normalizeProgress = (progress: Progress): Progress => ({
+  ...progress,
+  currentLevel: Math.min(Math.max(progress.currentLevel, 1), maxLevelId),
+  unlockedLevel: Math.min(Math.max(progress.unlockedLevel, 1), maxLevelId),
+});
+
 const readProgress = (): Progress => {
   try {
     if (typeof window === 'undefined') return defaultProgress;
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultProgress;
-    return { ...defaultProgress, ...JSON.parse(raw) };
+    return normalizeProgress({ ...defaultProgress, ...JSON.parse(raw) });
   } catch {
     return defaultProgress;
   }
@@ -74,8 +81,8 @@ export const useProgress = () => {
       });
 
       return {
-        currentLevel: passed ? Math.max(current.currentLevel, levelId + 1) : levelId,
-        unlockedLevel: passed ? Math.max(current.unlockedLevel, levelId + 1) : current.unlockedLevel,
+        currentLevel: passed ? Math.min(Math.max(current.currentLevel, levelId + 1), maxLevelId) : levelId,
+        unlockedLevel: passed ? Math.min(Math.max(current.unlockedLevel, levelId + 1), maxLevelId) : current.unlockedLevel,
         bestScores: {
           ...current.bestScores,
           [levelId]: Math.max(current.bestScores[levelId] || 0, score),

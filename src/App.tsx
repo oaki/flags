@@ -172,16 +172,6 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
 
   return (
     <div className="answer-world-map" aria-label={`Poloha krajiny ${country.name} na mape sveta`}>
-      <div className="world-map-grid" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-      <span className="world-continent americas" aria-hidden="true" />
-      <span className="world-continent europe-africa" aria-hidden="true" />
-      <span className="world-continent asia" aria-hidden="true" />
-      <span className="world-continent oceania" aria-hidden="true" />
       <span className="world-location-pulse" style={{ left: `${position.x}%`, top: `${position.y}%` }} aria-hidden="true" />
       <span className="world-location-pin" style={{ left: `${position.x}%`, top: `${position.y}%` }}>
         {country.code}
@@ -1175,7 +1165,7 @@ const App = () => {
           rel="noreferrer"
           target="_blank"
         >
-          Mapa: Wikimedia Commons
+          Mapy: Wikimedia Commons
         </a>
         <span>Verzia {packageInfo.version}</span>
       </footer>
