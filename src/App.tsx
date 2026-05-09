@@ -31,6 +31,13 @@ import { AnswerRecord, useProgress } from './hooks/useProgress';
 
 type Screen = 'levels' | 'quiz' | 'result' | 'album' | 'parent';
 
+type SvgBounds = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
 const regionNames: Record<string, string> = {
   Africa: 'Afrika',
   Americas: 'Amerika',
@@ -131,7 +138,7 @@ const sanitizeWorldMapSvg = (svg: string) =>
     .replace(/<!DOCTYPE[^>]*>/i, '')
     .replace(/<script[\s\S]*?<\/script>/gi, '');
 
-const getZoomedViewBox = (box: DOMRect, originalViewBox: DOMRect) => {
+const getZoomedViewBox = (box: SvgBounds, originalViewBox: SvgBounds) => {
   const mapAspectRatio = originalViewBox.width / originalViewBox.height;
   const maxZoom = 5.4;
   const padding = 5.8;
@@ -157,6 +164,123 @@ const getZoomedViewBox = (box: DOMRect, originalViewBox: DOMRect) => {
   const y = Math.min(Math.max(centerY - height / 2, minY), maxY);
 
   return `${x} ${y} ${width} ${height}`;
+};
+
+const expandBounds = (bounds: SvgBounds | null, x: number, y: number): SvgBounds => {
+  if (!bounds) return { x, y, width: 0, height: 0 };
+
+  const minX = Math.min(bounds.x, x);
+  const minY = Math.min(bounds.y, y);
+  const maxX = Math.max(bounds.x + bounds.width, x);
+  const maxY = Math.max(bounds.y + bounds.height, y);
+
+  return {
+    x: minX,
+    y: minY,
+    width: maxX - minX,
+    height: maxY - minY,
+  };
+};
+
+const getPathBounds = (pathData: string): SvgBounds | null => {
+  const tokens = pathData.match(/[a-zA-Z]|[-+]?\d*\.?\d+(?:e[-+]?\d+)?/gi) || [];
+  let index = 0;
+  let command = '';
+  let currentX = 0;
+  let currentY = 0;
+  let startX = 0;
+  let startY = 0;
+  let bounds: SvgBounds | null = null;
+  const isCommand = (token?: string) => Boolean(token && /^[a-zA-Z]$/.test(token));
+  const nextNumber = () => Number(tokens[index++]);
+  const addPoint = (x: number, y: number) => {
+    bounds = expandBounds(bounds, x, y);
+  };
+
+  while (index < tokens.length) {
+    if (isCommand(tokens[index])) {
+      command = tokens[index++];
+    }
+
+    const lowerCommand = command.toLowerCase();
+    const isRelative = command === lowerCommand;
+
+    if (lowerCommand === 'z') {
+      currentX = startX;
+      currentY = startY;
+      addPoint(currentX, currentY);
+      continue;
+    }
+
+    if (lowerCommand === 'h') {
+      while (index < tokens.length && !isCommand(tokens[index])) {
+        currentX = isRelative ? currentX + nextNumber() : nextNumber();
+        addPoint(currentX, currentY);
+      }
+      continue;
+    }
+
+    if (lowerCommand === 'v') {
+      while (index < tokens.length && !isCommand(tokens[index])) {
+        currentY = isRelative ? currentY + nextNumber() : nextNumber();
+        addPoint(currentX, currentY);
+      }
+      continue;
+    }
+
+    const pairCounts: Record<string, number> = {
+      m: 1,
+      l: 1,
+      t: 1,
+      s: 2,
+      q: 2,
+      c: 3,
+      a: 1,
+    };
+    const pairCount = pairCounts[lowerCommand];
+    if (!pairCount) break;
+
+    while (index < tokens.length && !isCommand(tokens[index])) {
+      if (lowerCommand === 'a') {
+        index += 5;
+      }
+
+      for (let pairIndex = 0; pairIndex < pairCount; pairIndex += 1) {
+        if (index + 1 >= tokens.length) break;
+
+        const rawX = nextNumber();
+        const rawY = nextNumber();
+        const x = isRelative ? currentX + rawX : rawX;
+        const y = isRelative ? currentY + rawY : rawY;
+        addPoint(x, y);
+
+        if (pairIndex === pairCount - 1) {
+          currentX = x;
+          currentY = y;
+
+          if (lowerCommand === 'm') {
+            startX = x;
+            startY = y;
+            command = isRelative ? 'l' : 'L';
+          }
+        }
+      }
+    }
+  }
+
+  return bounds;
+};
+
+const getCountrySvgBounds = (target: SVGGraphicsElement) => {
+  const paths = target instanceof SVGPathElement ? [target] : Array.from(target.querySelectorAll('path'));
+
+  return paths.reduce<SvgBounds | null>((bounds, path) => {
+    const pathBounds: SvgBounds | null = getPathBounds(path.getAttribute('d') || '');
+    if (pathBounds === null) return bounds;
+
+    const minBounds = expandBounds(bounds, pathBounds.x, pathBounds.y);
+    return expandBounds(minBounds, pathBounds.x + pathBounds.width, pathBounds.y + pathBounds.height);
+  }, null);
 };
 
 const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
@@ -257,7 +381,10 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
     const [x, y, width, height] = originalViewBox.split(/\s+/).map(Number);
     if ([x, y, width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
 
-    svg.setAttribute('viewBox', getZoomedViewBox(target.getBBox(), new DOMRect(x, y, width, height)));
+    const targetBounds = getCountrySvgBounds(target);
+    if (!targetBounds) return;
+
+    svg.setAttribute('viewBox', getZoomedViewBox(targetBounds, { x, y, width, height }));
   }, [country.code, mapSvg]);
 
   return (
