@@ -32,14 +32,52 @@ const knownWorldCodes = [
   'IN',
 ];
 
+const expertFocusCodes = [
+  'AD',
+  'LI',
+  'SM',
+  'MC',
+  'VA',
+  'MT',
+  'IS',
+  'BH',
+  'BT',
+  'BN',
+  'MV',
+  'TL',
+  'DJ',
+  'KM',
+  'CV',
+  'ST',
+  'SC',
+  'GM',
+  'LS',
+  'SZ',
+  'BB',
+  'BS',
+  'BZ',
+  'DM',
+  'GD',
+  'LC',
+  'KN',
+  'VC',
+  'SR',
+  'FJ',
+  'KI',
+  'MH',
+  'FM',
+  'NR',
+  'PW',
+  'SB',
+  'TO',
+  'TV',
+  'VU',
+];
+
 const byRegion = (region: Country['region']) =>
   countries.filter((country) => country.region === region && country.independent).map((country) => country.code);
 
-const beginnerCodes = new Set([...easyCountryCodes, ...byRegion('Europe'), ...knownWorldCodes]);
-
-const expertCodes = countries
-  .filter((country) => country.independent && !beginnerCodes.has(country.code))
-  .map((country) => country.code);
+const bonusFlagCodes = countries.filter((country) => !country.independent).map((country) => country.code);
 
 export const levels: Level[] = [
   {
@@ -68,11 +106,51 @@ export const levels: Level[] = [
   },
   {
     id: 4,
-    title: 'Expert',
-    subtitle: 'Menšie, vzdialenejšie a menej známe krajiny',
+    title: 'Ázia',
+    subtitle: 'Od Japonska po Blízky východ',
+    targetScore: 8,
+    questionCount: 12,
+    countryCodes: byRegion('Asia'),
+  },
+  {
+    id: 5,
+    title: 'Afrika',
+    subtitle: 'Veľký kontinent plný nových vlajok',
+    targetScore: 8,
+    questionCount: 12,
+    countryCodes: byRegion('Africa'),
+  },
+  {
+    id: 6,
+    title: 'Amerika',
+    subtitle: 'Severná, Stredná a Južná Amerika',
+    targetScore: 8,
+    questionCount: 12,
+    countryCodes: byRegion('Americas'),
+  },
+  {
+    id: 7,
+    title: 'Oceánia',
+    subtitle: 'Austrália a ostrovné krajiny Pacifiku',
     targetScore: 7,
     questionCount: 10,
-    countryCodes: expertCodes,
+    countryCodes: byRegion('Oceania'),
+  },
+  {
+    id: 8,
+    title: 'Expert mix',
+    subtitle: 'Malé štáty a vlajky, ktoré sa ľahko prehliadnu',
+    targetScore: 8,
+    questionCount: 12,
+    countryCodes: expertFocusCodes,
+  },
+  {
+    id: 9,
+    title: 'Bonus vlajky',
+    subtitle: 'Územia a špeciálne vlajky do albumu',
+    targetScore: 8,
+    questionCount: 12,
+    countryCodes: bonusFlagCodes,
   },
 ];
 

@@ -131,7 +131,27 @@ const shuffle = <T,>(items: T[]) => {
 };
 
 const getSimilarCodes = (code: string) => similarFlagGroups.find((group) => group.includes(code)) || [];
-const isMappableCountry = (country: Country) => country.code !== 'SS';
+const unmappableCountryCodes = new Set([
+  'AX',
+  'BQ',
+  'BV',
+  'IO',
+  'CW',
+  'TF',
+  'HM',
+  'HK',
+  'GS',
+  'SS',
+  'CC',
+  'MO',
+  'UM',
+  'NF',
+  'SX',
+  'SJ',
+  'TK',
+  'CX',
+]);
+const isMappableCountry = (country: Country) => !unmappableCountryCodes.has(country.code);
 
 const pickDistractors = (answer: Country, pool: Country[], optionCount: number, mode: GameMode) => {
   const similar = getSimilarCodes(answer.code)

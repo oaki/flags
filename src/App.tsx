@@ -47,8 +47,8 @@ const regionNames: Record<string, string> = {
   Oceania: 'Oceánia',
 };
 
-const levelIcons = ['⭐', '🏰', '🌎', '🧭', '☀️', '🌊', '🔎', '🌍'];
-const levelThemes = ['sunny', 'forest', 'coral', 'jade', 'gold', 'ocean', 'violet', 'rainbow'];
+const levelIcons = ['⭐', '🏰', '🌎', '🧭', '☀️', '🌽', '🌊', '🔎', '🎒'];
+const levelThemes = ['sunny', 'forest', 'coral', 'jade', 'gold', 'ocean', 'violet', 'rainbow', 'slate'];
 const soundStorageKey = 'flag-world-kids-sound-v1';
 const voiceStorageKey = 'flag-world-kids-voice-v1';
 const difficultyStorageKey = 'flag-world-kids-difficulty-v1';
@@ -1029,7 +1029,7 @@ const App = () => {
                 Každá správna odpoveď odomkne novú krajinu v albume a krátky príbeh, ktorý si dieťa ľahko zapamätá.
               </p>
             </div>
-            <button className="adventure-button" type="button" onClick={() => startLevel(levels[1])}>
+            <button className="adventure-button" type="button" onClick={() => startLevel(levels[0])}>
               <Sparkles size={22} />
               Začať dobrodružstvo
             </button>
@@ -1183,8 +1183,8 @@ const App = () => {
               </span>
               <h2>Čo sa dieťa učí</h2>
             </div>
-            <button className="next-button" type="button" onClick={() => startLevel(levels[1])}>
-              Spustiť Európu
+            <button className="next-button" type="button" onClick={() => startLevel(levels[progress.currentLevel - 1] || levels[0])}>
+              Pokračovať v leveli
             </button>
           </div>
 

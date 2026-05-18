@@ -648,6 +648,10 @@ h1 {
   --card-accent: linear-gradient(135deg, #fecdd3, #fde68a, #bbf7d0, #bae6fd);
 }
 
+.trail-card.slate {
+  --card-accent: #cbd5e1;
+}
+
 .trail-animal {
   align-items: center;
   background: #ffffff;
