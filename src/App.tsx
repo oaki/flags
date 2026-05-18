@@ -90,7 +90,7 @@ const difficultyLabels = {
 
 const modeLabels = {
   journey: {
-    title: 'Cesta Európou',
+    title: 'Vlajková výprava',
     subtitle: 'Nové a slabšie krajiny sa vracajú častejšie',
   },
   country: {
@@ -99,7 +99,7 @@ const modeLabels = {
   },
   map: {
     title: 'Find on Map',
-    subtitle: 'Nájdi krajinu na mape Európy',
+    subtitle: 'Nájdi krajinu na reálnej mape',
   },
   similar: {
     title: 'Podobné vlajky',
@@ -297,9 +297,37 @@ const getCountriesSvgBounds = (mapElement: HTMLElement, codes: string[]) =>
     return expandBounds(minBounds, countryBounds.x + countryBounds.width, countryBounds.y + countryBounds.height);
   }, null);
 
+const adjustSvgViewBox = (svg: SVGSVGElement, zoomFactor: number) => {
+  const currentViewBox =
+    svg.getAttribute('viewBox') || `0 0 ${svg.viewBox.baseVal.width || 2752.766} ${svg.viewBox.baseVal.height || 1537.631}`;
+  const originalViewBox = svg.dataset.originalViewBox || currentViewBox;
+  const [originalX, originalY, originalWidth, originalHeight] = originalViewBox.split(/\s+/).map(Number);
+  const [currentX, currentY, currentWidth, currentHeight] = currentViewBox.split(/\s+/).map(Number);
+
+  if (
+    [originalX, originalY, currentX, currentY].some((value) => Number.isNaN(value)) ||
+    [originalWidth, originalHeight, currentWidth, currentHeight].some((value) => Number.isNaN(value) || value <= 0)
+  ) {
+    return;
+  }
+
+  const nextWidth = Math.min(Math.max(currentWidth * zoomFactor, originalWidth / 9), originalWidth);
+  const nextHeight = Math.min(Math.max(currentHeight * zoomFactor, originalHeight / 9), originalHeight);
+  const centerX = currentX + currentWidth / 2;
+  const centerY = currentY + currentHeight / 2;
+  const x = Math.min(Math.max(centerX - nextWidth / 2, originalX), originalX + originalWidth - nextWidth);
+  const y = Math.min(Math.max(centerY - nextHeight / 2, originalY), originalY + originalHeight - nextHeight);
+
+  svg.setAttribute('viewBox', `${x} ${y} ${nextWidth} ${nextHeight}`);
+};
+
 const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapSvg, setMapSvg] = useState(worldMapSvgCache[europeMapAsset] || '');
+  const zoomMap = (zoomFactor: number) => {
+    const svg = mapRef.current?.querySelector('svg');
+    if (svg) adjustSvgViewBox(svg, zoomFactor);
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -334,7 +362,10 @@ const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet
     const svg = mapElement.querySelector('svg');
     if (!svg) return;
 
-    const europeCodes = levels[1].countryCodes;
+    const mapCodes =
+      variant === 'overview'
+        ? levels[1].countryCodes
+        : Array.from(new Set([...((availableCodes || []) as string[]), answerCode, selectedCode].filter((code): code is string => Boolean(code))));
     const availableSet = availableCodes ? new Set(availableCodes) : null;
 
     mapElement
@@ -358,7 +389,7 @@ const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet
       element.replaceWith(clone);
     });
 
-    europeCodes.forEach((code) => {
+    mapCodes.forEach((code) => {
       const target = mapElement.querySelector<SVGGraphicsElement>(`#${getWorldMapId(code)}`);
       if (!target) return;
 
@@ -400,17 +431,28 @@ const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet
     svg.dataset.originalViewBox = originalViewBox;
 
     const [x, y, width, height] = originalViewBox.split(/\s+/).map(Number);
-    if ([x, y, width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
+    if ([x, y].some((value) => Number.isNaN(value)) || [width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
 
-    const europeBounds = getCountriesSvgBounds(mapElement, europeViewportCodes);
-    if (!europeBounds) return;
+    const viewportCodes = variant === 'overview' ? europeViewportCodes : mapCodes;
+    const mapBounds = getCountriesSvgBounds(mapElement, viewportCodes);
+    if (!mapBounds) return;
 
-    svg.setAttribute('viewBox', getZoomedViewBox(europeBounds, { x, y, width, height }));
+    svg.setAttribute('viewBox', getZoomedViewBox(mapBounds, { x, y, width, height }));
   }, [answerCode, answered, availableCodes, discoveredSet, mapSvg, onPick, selectedCode, variant]);
 
   return (
     <div className={`europe-real-map ${variant}`} role="img" aria-label="Reálna mapa Európy s krajinami">
       <div className="europe-real-map-svg" ref={mapRef} dangerouslySetInnerHTML={{ __html: mapSvg }} />
+      {variant === 'quiz' && (
+        <div className="map-zoom-controls" aria-label="Priblíženie mapy">
+          <button type="button" onClick={() => zoomMap(0.72)} aria-label="Priblížiť mapu">
+            +
+          </button>
+          <button type="button" onClick={() => zoomMap(1.28)} aria-label="Oddialiť mapu">
+            -
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -468,7 +510,7 @@ const WorldLocationMap = ({ country }: { country: (typeof countries)[number] }) 
     svg.dataset.originalViewBox = originalViewBox;
 
     const [x, y, width, height] = originalViewBox.split(/\s+/).map(Number);
-    if ([x, y, width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
+    if ([x, y].some((value) => Number.isNaN(value)) || [width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
 
     const targetBounds = getCountrySvgBounds(target);
     if (!targetBounds) return;
@@ -496,7 +538,7 @@ const buildQuestionSpeech = (question: Question) => {
   }
 
   if (question.mode === 'map') {
-    return `Nájdi na mape krajinu ${question.answer.name}. Ťukni na správny bod.`;
+    return `Nájdi na mape krajinu ${question.answer.name}. Priblíž si mapu a ťukni na správnu krajinu.`;
   }
 
   const options = question.options
@@ -561,15 +603,14 @@ const App = () => {
     : 0;
 
   const discoveredFlags = progress.discoveredCountries.length;
-  const activeBest = progress.bestScores[activeLevel.id] || 0;
+  const activeBest = Math.min(progress.bestScores[activeLevel.id] || 0, activeLevel.questionCount);
   const passed = score >= activeLevel.targetScore;
   const newSessionDiscoveries = sessionDiscovered.filter((code) => !discoveredSet.has(code));
   const selectedVoice = voices.find((voice) => voice.voiceURI === selectedVoiceURI) || findBestVoice(voices);
   const currentPalette = currentQuestion ? getFlagPalette(currentQuestion.answer.code) : undefined;
   const mapChoiceCodes = useMemo(() => {
     if (!currentQuestion) return [];
-    const optionCodes = new Set(currentQuestion.options.map((option) => option.code));
-    return europeMapPoints.filter((point) => optionCodes.has(point.code)).map((point) => point.code);
+    return currentQuestion.options.map((option) => option.code);
   }, [currentQuestion]);
   const paintChoices = useMemo(() => {
     if (!currentQuestion) return [];
@@ -863,19 +904,19 @@ const App = () => {
 
   const getWrongVoiceText = (question: Question) => {
     if (question.mode === 'paint') {
-      return `Ešte nie. Vlajka krajiny ${question.answer.name} má iné poradie farieb. ${question.hint}`;
+      return `Skúsime to opraviť. Vlajka krajiny ${question.answer.name} má iné poradie farieb. ${question.hint}`;
     }
 
     if (question.mode === 'map') {
-      return `Ešte nie. Správna krajina je ${question.answer.name}. ${question.hint}`;
+      return `Pozrime sa na správne miesto. Správna krajina je ${question.answer.name}. ${question.hint}`;
     }
 
-    return `Ešte nie. Správna odpoveď je ${question.answer.name}. ${question.hint}`;
+    return `Dobrá skúška. Správna odpoveď je ${question.answer.name}. ${question.hint}`;
   };
 
   const getFeedbackTitle = (question: Question, correct: boolean, newDiscovery: boolean) => {
     if (!correct) {
-      if (question.mode === 'paint') return `Ešte nie. Toto bola vlajka krajiny ${question.answer.name}.`;
+      if (question.mode === 'paint') return `Farby ešte nesedia. Toto bola vlajka krajiny ${question.answer.name}.`;
       return `Takmer. Správne je ${question.answer.name}.`;
     }
 
@@ -1061,7 +1102,7 @@ const App = () => {
             </div>
             {levels.map((level, index) => {
               const isLocked = level.id > progress.unlockedLevel;
-              const best = progress.bestScores[level.id] || 0;
+              const best = Math.min(progress.bestScores[level.id] || 0, level.questionCount);
               const isCurrent = level.id === progress.currentLevel;
               const discoveredInLevel = level.countryCodes.filter((code) => discoveredSet.has(code)).length;
 
@@ -1279,7 +1320,7 @@ const App = () => {
                 <div className="map-question-stage" aria-label={`Nájdi na mape: ${currentQuestion.answer.name}`}>
                   <span>Hľadaná krajina</span>
                   <strong>{currentQuestion.answer.name}</strong>
-                  <small>Ťukni na správny bod na mape.</small>
+                  <small>Priblíž si mapu a ťukni na správnu krajinu.</small>
                 </div>
               ) : (
                 <div className="flag-frame">
@@ -1416,7 +1457,7 @@ const App = () => {
             })}
           </div>
           <p className="best-result">
-            Najlepší výsledok v tomto leveli je {Math.max(activeBest, score)}/{activeLevel.questionCount}.
+            Najlepší výsledok v tomto leveli je {Math.min(Math.max(activeBest, score), activeLevel.questionCount)}/{activeLevel.questionCount}.
           </p>
           <div className="achievement-strip result-achievements" aria-label="Odznaky po hre">
             {achievements.map((achievement) => (

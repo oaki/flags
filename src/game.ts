@@ -131,6 +131,7 @@ const shuffle = <T,>(items: T[]) => {
 };
 
 const getSimilarCodes = (code: string) => similarFlagGroups.find((group) => group.includes(code)) || [];
+const isMappableCountry = (country: Country) => country.code !== 'SS';
 
 const pickDistractors = (answer: Country, pool: Country[], optionCount: number, mode: GameMode) => {
   const similar = getSimilarCodes(answer.code)
@@ -138,16 +139,16 @@ const pickDistractors = (answer: Country, pool: Country[], optionCount: number, 
     .map((code) => getCountryByCode(code))
     .filter((country): country is Country => Boolean(country));
   const sameRegion = pool.filter((country) => country.code !== answer.code && country.region === answer.region);
-  const backup = countries.filter((country) => country.code !== answer.code);
+  const backup = countries.filter((country) => country.code !== answer.code && (mode !== 'map' || isMappableCountry(country)));
   const paintPool = pool.filter((country) => flagPalettes[country.code]);
-  const mapPool = pool.filter((country) => europeMapPoints.some((point) => point.code === country.code));
+  const mapPool = pool.filter(isMappableCountry);
   const preferred =
     mode === 'similar'
       ? [...similar, ...sameRegion]
       : mode === 'paint'
         ? [...paintPool, ...sameRegion]
         : mode === 'map'
-          ? [...mapPool, ...sameRegion]
+          ? [...mapPool, ...sameRegion.filter(isMappableCountry), ...similar.filter(isMappableCountry)]
           : [...sameRegion, ...similar];
 
   return shuffle([...preferred, ...backup])
@@ -166,9 +167,7 @@ const buildQuestionPool = (level: Level, settings: QuestionSettings) => {
   }
 
   if (settings.mode === 'map') {
-    const mappableCodes = new Set(europeMapPoints.map((point) => point.code));
-    const mapPool = pool.filter((country) => mappableCodes.has(country.code));
-    return mapPool.length >= 4 ? mapPool : pool;
+    return pool.filter(isMappableCountry);
   }
 
   if (settings.mode !== 'similar') return pool;
@@ -184,7 +183,7 @@ const weightCountry = (country: Country, settings: QuestionSettings) => {
   if (!settings.discoveredCountryCodes?.includes(country.code)) weight += 2;
   if (settings.mode === 'similar' && getSimilarCodes(country.code).length > 0) weight += 2;
   if (settings.mode === 'paint' && flagPalettes[country.code]) weight += 3;
-  if (settings.mode === 'map' && europeMapPoints.some((point) => point.code === country.code)) weight += 3;
+  if (settings.mode === 'map') weight += 2;
   return weight;
 };
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { maxLevelId } from '../data/levels';
+import { levels, maxLevelId } from '../data/levels';
 
 const STORAGE_KEY = 'flag-world-kids-progress-v1';
 
@@ -31,11 +31,19 @@ const defaultProgress: Progress = {
   dailyChallengeDates: [],
 };
 
-const normalizeProgress = (progress: Progress): Progress => ({
-  ...progress,
-  currentLevel: Math.min(Math.max(progress.currentLevel, 1), maxLevelId),
-  unlockedLevel: Math.min(Math.max(progress.unlockedLevel, 1), maxLevelId),
-});
+const normalizeProgress = (progress: Progress): Progress => {
+  const normalizedBestScores = levels.reduce<Record<number, number>>((scores, level) => {
+    scores[level.id] = Math.min(progress.bestScores[level.id] || 0, level.questionCount);
+    return scores;
+  }, {});
+
+  return {
+    ...progress,
+    currentLevel: Math.min(Math.max(progress.currentLevel, 1), maxLevelId),
+    unlockedLevel: Math.min(Math.max(progress.unlockedLevel, 1), maxLevelId),
+    bestScores: normalizedBestScores,
+  };
+};
 
 const readProgress = (): Progress => {
   try {
@@ -66,6 +74,7 @@ export const useProgress = () => {
 
   const saveScore = useCallback((levelId: number, score: number, total: number, passed: boolean, discovered: string[], answers: AnswerRecord[], dailyDate?: string) => {
     setProgress((current) => {
+      const cappedScore = Math.min(score, total);
       const countryAttempts = { ...current.countryAttempts };
       const countryCorrect = { ...current.countryCorrect };
       const countryMistakes = { ...current.countryMistakes };
@@ -85,14 +94,14 @@ export const useProgress = () => {
         unlockedLevel: passed ? Math.min(Math.max(current.unlockedLevel, levelId + 1), maxLevelId) : current.unlockedLevel,
         bestScores: {
           ...current.bestScores,
-          [levelId]: Math.max(current.bestScores[levelId] || 0, score),
+          [levelId]: Math.min(Math.max(current.bestScores[levelId] || 0, cappedScore), total),
         },
         discoveredCountries: Array.from(new Set([...current.discoveredCountries, ...discovered])),
         countryAttempts,
         countryCorrect,
         countryMistakes,
         totalAnswered: current.totalAnswered + total,
-        totalCorrect: current.totalCorrect + score,
+        totalCorrect: current.totalCorrect + cappedScore,
         sessionsPlayed: current.sessionsPlayed + 1,
         dailyChallengeDates: dailyDate
           ? Array.from(new Set([...current.dailyChallengeDates, dailyDate]))
