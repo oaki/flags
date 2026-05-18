@@ -97,6 +97,10 @@ const modeLabels = {
     title: 'Guess the Country',
     subtitle: 'Pozri názov krajiny a vyber správnu vlajku',
   },
+  capital: {
+    title: 'Capital Quiz',
+    subtitle: 'Pozri krajinu a vyber jej hlavné mesto',
+  },
   map: {
     title: 'Find on Map',
     subtitle: 'Nájdi krajinu na reálnej mape',
@@ -537,6 +541,10 @@ const buildQuestionSpeech = (question: Question) => {
     return `Nájdi vlajku krajiny ${question.answer.name}. Vyber správny obrázok vlajky.`;
   }
 
+  if (question.mode === 'capital') {
+    return `Aké hlavné mesto má krajina ${question.answer.name}? Vyber správnu odpoveď.`;
+  }
+
   if (question.mode === 'map') {
     return `Nájdi na mape krajinu ${question.answer.name}. Priblíž si mapu a ťukni na správnu krajinu.`;
   }
@@ -907,6 +915,12 @@ const App = () => {
         : `Správne. Našiel si krajinu ${question.answer.name} na mape. ${getCountryStory(question.answer)}`;
     }
 
+    if (question.mode === 'capital') {
+      return newDiscovery
+        ? `Správne. Hlavné mesto krajiny ${question.answer.name} je ${question.answer.capital} a krajina pribúda do albumu. ${getCountryStory(question.answer)}`
+        : `Správne. Hlavné mesto krajiny ${question.answer.name} je ${question.answer.capital}. ${getCountryStory(question.answer)}`;
+    }
+
     return newDiscovery
       ? `Správne. ${question.answer.name} pribúda do albumu. ${getCountryStory(question.answer)}`
       : `Správne. Toto je ${question.answer.name}. ${getCountryStory(question.answer)}`;
@@ -919,6 +933,10 @@ const App = () => {
 
     if (question.mode === 'map') {
       return `Pozrime sa na správne miesto. Správna krajina je ${question.answer.name}. ${question.hint}`;
+    }
+
+    if (question.mode === 'capital') {
+      return `Dobrá skúška. Hlavné mesto krajiny ${question.answer.name} je ${question.answer.capital}. ${question.hint}`;
     }
 
     return `Dobrá skúška. Správna odpoveď je ${question.answer.name}. ${question.hint}`;
@@ -938,6 +956,10 @@ const App = () => {
       return newDiscovery ? 'Správne miesto, krajina pribudla do albumu.' : 'Správne miesto na mape.';
     }
 
+    if (question.mode === 'capital') {
+      return newDiscovery ? 'Hlavné mesto sedí, krajina pribudla do albumu.' : 'Hlavné mesto sedí.';
+    }
+
     return newDiscovery ? 'Správne, krajina pribudla do albumu.' : 'Správne.';
   };
 
@@ -955,6 +977,7 @@ const App = () => {
   const getQuestionTitle = (question: Question) => {
     if (question.mode === 'paint') return 'Vyskladaj farby vlajky.';
     if (question.mode === 'country') return `Ktorá vlajka patrí krajine ${question.answer.name}?`;
+    if (question.mode === 'capital') return `Aké hlavné mesto má ${question.answer.name}?`;
     if (question.mode === 'map') return `Kde na mape je ${question.answer.name}?`;
     return 'Ktorej krajine patrí táto vlajka?';
   };
@@ -1359,6 +1382,12 @@ const App = () => {
                   <strong>{currentQuestion.answer.name}</strong>
                   <small>{regionNames[currentQuestion.answer.region]}</small>
                 </div>
+              ) : currentQuestion.mode === 'capital' ? (
+                <div className="country-stage" aria-label={`Vyber hlavné mesto: ${currentQuestion.answer.name}`}>
+                  <span>Hľadaná krajina</span>
+                  <strong>{currentQuestion.answer.name}</strong>
+                  <small>{regionNames[currentQuestion.answer.region]}</small>
+                </div>
               ) : currentQuestion.mode === 'map' ? (
                 <div className="map-question-stage" aria-label={`Nájdi na mape: ${currentQuestion.answer.name}`}>
                   <span>Hľadaná krajina</span>
@@ -1433,6 +1462,8 @@ const App = () => {
                         <span className="flag-answer-content">
                           <img alt={`Možnosť ${getOptionLabel(currentQuestion.options.findIndex((item) => item.code === option.code))}`} src={option.flagUrl} />
                         </span>
+                      ) : currentQuestion.mode === 'capital' ? (
+                        <span>{option.capital}</span>
                       ) : (
                         <span>{option.name}</span>
                       )}

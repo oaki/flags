@@ -2,7 +2,7 @@ import { Country, countries, getCountryByCode } from './data/countries';
 import { Level } from './data/levels';
 
 export type Difficulty = 'baby' | 'junior' | 'master';
-export type GameMode = 'journey' | 'country' | 'map' | 'similar' | 'paint';
+export type GameMode = 'journey' | 'country' | 'capital' | 'map' | 'similar' | 'paint';
 
 export type FlagPalette = {
   orientation: 'horizontal' | 'vertical' | 'cross' | 'symbol';
@@ -131,6 +131,7 @@ const shuffle = <T,>(items: T[]) => {
 };
 
 const getSimilarCodes = (code: string) => similarFlagGroups.find((group) => group.includes(code)) || [];
+const hasCapital = (country: Country) => Boolean(country.capital.trim());
 const unmappableCountryCodes = new Set([
   'AX',
   'BQ',
@@ -162,6 +163,7 @@ const pickDistractors = (answer: Country, pool: Country[], optionCount: number, 
   const backup = countries.filter((country) => country.code !== answer.code && (mode !== 'map' || isMappableCountry(country)));
   const paintPool = pool.filter((country) => flagPalettes[country.code]);
   const mapPool = pool.filter(isMappableCountry);
+  const capitalPool = pool.filter(hasCapital);
   const preferred =
     mode === 'similar'
       ? [...similar, ...sameRegion]
@@ -169,11 +171,23 @@ const pickDistractors = (answer: Country, pool: Country[], optionCount: number, 
         ? [...paintPool, ...sameRegion]
         : mode === 'map'
           ? [...mapPool, ...sameRegion.filter(isMappableCountry), ...similar.filter(isMappableCountry)]
+          : mode === 'capital'
+            ? [...sameRegion.filter(hasCapital), ...capitalPool]
           : [...sameRegion, ...similar];
 
-  return shuffle([...preferred, ...backup])
-    .filter((country, index, list) => list.findIndex((item) => item.code === country.code) === index)
-    .slice(0, optionCount - 1);
+  const uniquePreferred = [...preferred].filter(
+    (country, index, list) =>
+      country.code !== answer.code &&
+      list.findIndex((item) => item.code === country.code || (mode === 'capital' && item.capital === country.capital)) === index,
+  );
+  const picked = shuffle(uniquePreferred).slice(0, optionCount - 1);
+
+  if (picked.length >= optionCount - 1) return picked;
+
+  const backupPool = backup.filter(
+    (country) => !picked.some((item) => item.code === country.code || (mode === 'capital' && item.capital === country.capital)),
+  );
+  return [...picked, ...shuffle(backupPool).slice(0, optionCount - 1 - picked.length)];
 };
 
 const buildQuestionPool = (level: Level, settings: QuestionSettings) => {
@@ -190,6 +204,11 @@ const buildQuestionPool = (level: Level, settings: QuestionSettings) => {
     return pool.filter(isMappableCountry);
   }
 
+  if (settings.mode === 'capital') {
+    const capitalPool = pool.filter(hasCapital);
+    return capitalPool.length >= 4 ? capitalPool : pool;
+  }
+
   if (settings.mode !== 'similar') return pool;
 
   const similarCodes = new Set(similarFlagGroups.flat());
@@ -204,6 +223,7 @@ const weightCountry = (country: Country, settings: QuestionSettings) => {
   if (settings.mode === 'similar' && getSimilarCodes(country.code).length > 0) weight += 2;
   if (settings.mode === 'paint' && flagPalettes[country.code]) weight += 3;
   if (settings.mode === 'map') weight += 2;
+  if (settings.mode === 'capital') weight += 2;
   return weight;
 };
 
@@ -214,6 +234,7 @@ const getHint = (answer: Country, mode: GameMode) => {
   if (countryHints[answer.code]) return countryHints[answer.code];
   if (mode === 'paint') return 'Vyber farebné rozloženie vlajky. Poradie farieb je dôležité.';
   if (mode === 'country') return 'Pozri sa na názov krajiny a vyber vlajku, ktorá k nej patrí.';
+  if (mode === 'capital') return 'Vyber hlavné mesto tejto krajiny.';
   if (mode === 'map') return 'Nájdi krajinu na mape. Pomôže ti jej poloha medzi susedmi.';
   if (mode === 'similar') return 'Všímaj si poradie farieb, smer pruhov a malé znaky na vlajke.';
   if (answer.region === 'Europe') return 'Táto krajina je v Európe. Skús si všimnúť farby a znak.';
