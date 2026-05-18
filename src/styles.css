@@ -548,14 +548,15 @@ h1 {
 .europe-real-map.quiz .europe-country-available,
 .europe-real-map.quiz .europe-country-available * {
   cursor: pointer;
-  fill: #bfdbfe !important;
-  stroke: #2563eb !important;
-  stroke-width: 2.3px !important;
+  fill: #e2e8f0 !important;
+  stroke: #94a3b8 !important;
+  stroke-width: 1.7px !important;
 }
 
 .europe-real-map.quiz .europe-country-available:hover,
 .europe-real-map.quiz .europe-country-available:hover * {
-  fill: #60a5fa !important;
+  fill: #dbeafe !important;
+  stroke: #3b82f6 !important;
 }
 
 .europe-real-map .europe-country-correct,

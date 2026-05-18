@@ -610,8 +610,8 @@ const App = () => {
   const currentPalette = currentQuestion ? getFlagPalette(currentQuestion.answer.code) : undefined;
   const mapChoiceCodes = useMemo(() => {
     if (!currentQuestion) return [];
-    return currentQuestion.options.map((option) => option.code);
-  }, [currentQuestion]);
+    return Array.from(new Set([...activeLevel.countryCodes, ...currentQuestion.options.map((option) => option.code)])).filter((code) => code !== 'SS');
+  }, [activeLevel.countryCodes, currentQuestion]);
   const paintChoices = useMemo(() => {
     if (!currentQuestion) return [];
     const colors = currentQuestion.options.flatMap((option) => getFlagPalette(option.code)?.colors || []);
