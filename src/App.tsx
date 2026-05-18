@@ -131,6 +131,8 @@ const worldMapIdAliases: Record<string, string> = {
 
 const getWorldMapId = (code: string) => worldMapIdAliases[code] || code.toLowerCase();
 const getWorldMapAsset = (code: string) => (code === 'SS' ? '/world-map.svg' : '/world-map-equirectangular.svg');
+const europeMapAsset = '/world-map-equirectangular.svg';
+const europeViewportCodes = europeMapPoints.map((point) => point.code);
 
 const sanitizeWorldMapSvg = (svg: string) =>
   svg
@@ -283,45 +285,132 @@ const getCountrySvgBounds = (target: SVGGraphicsElement) => {
   }, null);
 };
 
+const getCountriesSvgBounds = (mapElement: HTMLElement, codes: string[]) =>
+  codes.reduce<SvgBounds | null>((bounds, code) => {
+    const target = mapElement.querySelector<SVGGraphicsElement>(`#${getWorldMapId(code)}`);
+    if (!target) return bounds;
+
+    const countryBounds = getCountrySvgBounds(target);
+    if (!countryBounds) return bounds;
+
+    const minBounds = expandBounds(bounds, countryBounds.x, countryBounds.y);
+    return expandBounds(minBounds, countryBounds.x + countryBounds.width, countryBounds.y + countryBounds.height);
+  }, null);
+
 const EuropeMap = ({ answerCode, answered = false, availableCodes, discoveredSet, onPick, selectedCode, variant }: EuropeMapProps) => {
-  const availableSet = availableCodes ? new Set(availableCodes) : null;
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [mapSvg, setMapSvg] = useState(worldMapSvgCache[europeMapAsset] || '');
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (worldMapSvgCache[europeMapAsset]) {
+      setMapSvg(worldMapSvgCache[europeMapAsset]);
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    fetch(europeMapAsset)
+      .then((response) => response.text())
+      .then((svg) => {
+        if (cancelled) return;
+        worldMapSvgCache[europeMapAsset] = sanitizeWorldMapSvg(svg);
+        setMapSvg(worldMapSvgCache[europeMapAsset]);
+      })
+      .catch(() => {
+        setMapSvg('');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    const mapElement = mapRef.current;
+    if (!mapElement || !mapSvg) return;
+
+    const svg = mapElement.querySelector('svg');
+    if (!svg) return;
+
+    const europeCodes = levels[1].countryCodes;
+    const availableSet = availableCodes ? new Set(availableCodes) : null;
+
+    mapElement
+      .querySelectorAll('.europe-country, .europe-country-found, .europe-country-available, .europe-country-correct, .europe-country-wrong')
+      .forEach((element) => {
+        element.classList.remove(
+          'europe-country',
+          'europe-country-found',
+          'europe-country-available',
+          'europe-country-correct',
+          'europe-country-wrong',
+        );
+      });
+
+    mapElement.querySelectorAll<SVGGraphicsElement>('[data-pick-code]').forEach((element) => {
+      const clone = element.cloneNode(true) as SVGGraphicsElement;
+      clone.removeAttribute('data-pick-code');
+      clone.removeAttribute('role');
+      clone.removeAttribute('tabindex');
+      clone.removeAttribute('aria-label');
+      element.replaceWith(clone);
+    });
+
+    europeCodes.forEach((code) => {
+      const target = mapElement.querySelector<SVGGraphicsElement>(`#${getWorldMapId(code)}`);
+      if (!target) return;
+
+      target.classList.add('europe-country');
+
+      if (variant === 'overview' && discoveredSet?.has(code)) {
+        target.classList.add('europe-country-found');
+      }
+
+      if (variant === 'quiz') {
+        const isAvailable = !availableSet || availableSet.has(code);
+        const isCorrect = answered && code === answerCode;
+        const isWrong = answered && selectedCode === code && selectedCode !== answerCode;
+
+        if (isAvailable) target.classList.add('europe-country-available');
+        if (isCorrect) target.classList.add('europe-country-correct');
+        if (isWrong) target.classList.add('europe-country-wrong');
+
+        if (isAvailable && !answered) {
+          target.dataset.pickCode = code;
+          target.setAttribute('role', 'button');
+          target.setAttribute('tabindex', '0');
+          target.setAttribute('aria-label', countries.find((country) => country.code === code)?.name || code);
+          target.addEventListener('click', () => onPick?.(code));
+          target.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              onPick?.(code);
+            }
+          });
+        }
+      }
+    });
+
+    const originalViewBox =
+      svg.dataset.originalViewBox ||
+      svg.getAttribute('viewBox') ||
+      `0 0 ${svg.viewBox.baseVal.width || 2752.766} ${svg.viewBox.baseVal.height || 1537.631}`;
+    svg.dataset.originalViewBox = originalViewBox;
+
+    const [x, y, width, height] = originalViewBox.split(/\s+/).map(Number);
+    if ([x, y, width, height].some((value) => Number.isNaN(value) || value <= 0)) return;
+
+    const europeBounds = getCountriesSvgBounds(mapElement, europeViewportCodes);
+    if (!europeBounds) return;
+
+    svg.setAttribute('viewBox', getZoomedViewBox(europeBounds, { x, y, width, height }));
+  }, [answerCode, answered, availableCodes, discoveredSet, mapSvg, onPick, selectedCode, variant]);
 
   return (
     <div className={`europe-real-map ${variant}`} role="img" aria-label="Reálna mapa Európy s krajinami">
-      {europeMapPoints.map((point) => {
-        const country = countries.find((item) => item.code === point.code);
-        const isAvailable = !availableSet || availableSet.has(point.code);
-        const isCorrect = answered && point.code === answerCode;
-        const isWrong = answered && selectedCode === point.code && selectedCode !== answerCode;
-        const isFound = discoveredSet?.has(point.code);
-        const isInteractive = variant === 'quiz' && isAvailable && !answered;
-        const className = [
-          'real-map-marker',
-          isAvailable ? 'available' : 'muted',
-          isFound ? 'found' : '',
-          isCorrect ? 'correct' : '',
-          isWrong ? 'wrong' : '',
-        ]
-          .filter(Boolean)
-          .join(' ');
-
-        return (
-          <button
-            aria-label={country?.name || point.code}
-            className={className}
-            disabled={!isInteractive}
-            key={point.code}
-            onClick={() => {
-              onPick?.(point.code);
-            }}
-            style={{ left: `${point.x}%`, top: `${point.y}%` }}
-            title={country?.name || point.code}
-            type="button"
-          >
-            {point.code}
-          </button>
-        );
-      })}
+      <div className="europe-real-map-svg" ref={mapRef} dangerouslySetInnerHTML={{ __html: mapSvg }} />
     </div>
   );
 };
