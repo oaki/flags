@@ -47,6 +47,8 @@ const regionNames: Record<string, string> = {
   Oceania: 'Oceánia',
 };
 
+const albumRegionOrder = ['Europe', 'Asia', 'Africa', 'Americas', 'Oceania', 'Antarctic'] as const;
+
 const levelIcons = ['⭐', '🏰', '🌎', '🧭', '☀️', '🌽', '🌊', '🔎', '🎒'];
 const levelThemes = ['sunny', 'forest', 'coral', 'jade', 'gold', 'ocean', 'violet', 'rainbow', 'slate'];
 const soundStorageKey = 'flag-world-kids-sound-v1';
@@ -598,6 +600,16 @@ const App = () => {
 
   const currentQuestion = questions[questionIndex];
   const discoveredSet = useMemo(() => new Set(progress.discoveredCountries), [progress.discoveredCountries]);
+  const albumRegions = useMemo(
+    () =>
+      albumRegionOrder
+        .map((region) => ({
+          region,
+          countries: countries.filter((country) => country.region === region),
+        }))
+        .filter((group) => group.countries.length > 0),
+    [],
+  );
   const totalAccuracy = progress.totalAnswered
     ? Math.round((progress.totalCorrect / progress.totalAnswered) * 100)
     : 0;
@@ -1154,16 +1166,39 @@ const App = () => {
               Pokračovať v hre
             </button>
           </div>
-          <div className="album-grid">
-            {countries.map((country) => {
-              const discovered = discoveredSet.has(country.code);
+          <div className="album-regions">
+            {albumRegions.map((group) => {
+              const foundInRegion = group.countries.filter((country) => discoveredSet.has(country.code)).length;
 
               return (
-                <article className={`sticker-card ${discovered ? 'found' : ''}`} key={country.code}>
-                  <img alt="" src={country.flagUrl} />
-                  <strong>{discovered ? country.name : 'Tajná krajina'}</strong>
-                  <small>{discovered ? regionNames[country.region] : 'Odomkni v kvíze'}</small>
-                </article>
+                <section className="album-region" key={group.region}>
+                  <div className="album-region-header">
+                    <div>
+                      <span>{regionNames[group.region]}</span>
+                      <strong>
+                        {foundInRegion}/{group.countries.length}
+                      </strong>
+                    </div>
+                    <small>
+                      {group.countries.length - foundInRegion === 0
+                        ? 'Kontinent dokončený'
+                        : `Chýba ešte ${group.countries.length - foundInRegion}`}
+                    </small>
+                  </div>
+                  <div className="album-grid">
+                    {group.countries.map((country) => {
+                      const discovered = discoveredSet.has(country.code);
+
+                      return (
+                        <article className={`sticker-card ${discovered ? 'found' : ''}`} key={country.code}>
+                          <img alt="" src={country.flagUrl} />
+                          <strong>{country.name}</strong>
+                          <small>{discovered ? 'Objavené' : 'Chýba'}</small>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
               );
             })}
           </div>
