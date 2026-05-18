@@ -2,13 +2,11 @@ import {
   CheckCircle2,
   Flag,
   ArrowUp,
-  Brush,
   Award,
   CalendarDays,
   Globe2,
   Lock,
   Map,
-  MapPin,
   BookOpen,
   BarChart3,
   Eye,
@@ -86,7 +84,7 @@ const difficultyLabels = {
   },
   master: {
     title: 'Flag Master',
-    subtitle: '4 možnosti a viac detailov',
+    subtitle: '4 možnosti a viac',
   },
 } satisfies Record<Difficulty, { title: string; subtitle: string }>;
 
@@ -1088,28 +1086,38 @@ const App = () => {
                 </span>
                 <h2>Vyber tempo výpravy</h2>
               </div>
-              <div className="setting-group" aria-label="Obtiažnosť">
-                {(Object.keys(difficultyLabels) as Difficulty[]).map((key) => (
-                  <button
-                    className={difficulty === key ? 'active' : ''}
-                    key={key}
-                    onClick={() => changeDifficulty(key)}
-                    type="button"
-                  >
-                    <strong>{difficultyLabels[key].title}</strong>
-                    <span>{difficultyLabels[key].subtitle}</span>
-                  </button>
-                ))}
+              <div className="setting-section">
+                <div className="setting-section-header">
+                  <strong>Obtiažnosť</strong>
+                  <span>Koľko možností dieťa dostane pri otázke.</span>
+                </div>
+                <div className="setting-group" aria-label="Obtiažnosť">
+                  {(Object.keys(difficultyLabels) as Difficulty[]).map((key) => (
+                    <button
+                      className={difficulty === key ? 'active' : ''}
+                      key={key}
+                      onClick={() => changeDifficulty(key)}
+                      type="button"
+                    >
+                      <strong>{difficultyLabels[key].title}</strong>
+                      <span>{difficultyLabels[key].subtitle}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="setting-group modes" aria-label="Herný mód">
-                {(Object.keys(modeLabels) as GameMode[]).map((key) => (
-                  <button className={mode === key ? 'active' : ''} key={key} onClick={() => changeMode(key)} type="button">
-                    {key === 'paint' && <Brush size={18} />}
-                    {key === 'map' && <MapPin size={18} />}
-                    <strong>{modeLabels[key].title}</strong>
-                    <span>{modeLabels[key].subtitle}</span>
-                  </button>
-                ))}
+              <div className="setting-section">
+                <div className="setting-section-header">
+                  <strong>Herný mód</strong>
+                  <span>Čo má dieťa v danej hre trénovať.</span>
+                </div>
+                <div className="setting-group modes" aria-label="Herný mód">
+                  {(Object.keys(modeLabels) as GameMode[]).map((key) => (
+                    <button className={mode === key ? 'active' : ''} key={key} onClick={() => changeMode(key)} type="button">
+                      <strong>{modeLabels[key].title}</strong>
+                      <span>{modeLabels[key].subtitle}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
             {levels.map((level, index) => {
